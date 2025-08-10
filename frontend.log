@@ -1,0 +1,22 @@
+🚀 Starting Tenggeli Desert Monitoring Frontend...
+✅ Dependencies already installed
+🔍 Running TypeScript type check...
+
+> tenggeli-monitoring-frontend@1.0.0 type-check
+> tsc --noEmit
+
+✅ TypeScript types are valid
+🌐 Starting development server on http://localhost:3000
+🗺️  Map dashboard will be available once the server starts
+🛑 Press Ctrl+C to stop the server
+
+
+> tenggeli-monitoring-frontend@1.0.0 dev
+> vite
+
+
+  VITE v7.0.6  ready in 184 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://26.143.185.50:3000/
+  ➜  Network: http://192.168.1.146:3000/

@@ -1,0 +1,480 @@
+2025-08-03 22:45:46,296 - INFO - Created directories in: ./data
+2025-08-03 22:49:21,472 - INFO - Created directories in: ./data
+2025-08-03 22:49:23,586 - INFO - Google Earth Engine initialized successfully
+2025-08-03 22:49:23,587 - INFO - Starting download for year 2020
+2025-08-03 22:49:23,587 - INFO - Processing 2020-01: 2020-01-01 to 2020-02-01
+2025-08-03 22:49:24,010 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:24,011 - ERROR - Error processing 2020-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:24,011 - INFO - Processing 2020-02: 2020-02-01 to 2020-03-01
+2025-08-03 22:49:24,480 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:24,482 - ERROR - Error processing 2020-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:24,482 - INFO - Processing 2020-03: 2020-03-01 to 2020-04-01
+2025-08-03 22:49:24,965 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:24,966 - ERROR - Error processing 2020-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:24,967 - INFO - Processing 2020-04: 2020-04-01 to 2020-05-01
+2025-08-03 22:49:25,419 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:25,420 - ERROR - Error processing 2020-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:25,420 - INFO - Processing 2020-05: 2020-05-01 to 2020-06-01
+2025-08-03 22:49:25,820 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:25,820 - ERROR - Error processing 2020-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:25,820 - INFO - Processing 2020-06: 2020-06-01 to 2020-07-01
+2025-08-03 22:49:26,218 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:26,218 - ERROR - Error processing 2020-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:26,218 - INFO - Processing 2020-07: 2020-07-01 to 2020-08-01
+2025-08-03 22:49:26,614 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:26,614 - ERROR - Error processing 2020-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:26,614 - INFO - Processing 2020-08: 2020-08-01 to 2020-09-01
+2025-08-03 22:49:27,069 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:27,070 - ERROR - Error processing 2020-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:27,070 - INFO - Processing 2020-09: 2020-09-01 to 2020-10-01
+2025-08-03 22:49:27,918 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:27,919 - ERROR - Error processing 2020-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:27,919 - INFO - Processing 2020-10: 2020-10-01 to 2020-11-01
+2025-08-03 22:49:28,359 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:28,359 - ERROR - Error processing 2020-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:28,360 - INFO - Processing 2020-11: 2020-11-01 to 2020-12-01
+2025-08-03 22:49:28,864 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:28,865 - ERROR - Error processing 2020-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:28,865 - INFO - Processing 2020-12: 2020-12-01 to 2021-01-01
+2025-08-03 22:49:29,383 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:29,384 - ERROR - Error processing 2020-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:29,385 - INFO - Submitted 0 export tasks for 2020
+2025-08-03 22:49:29,385 - INFO - Starting download for year 2021
+2025-08-03 22:49:29,386 - INFO - Processing 2021-01: 2021-01-01 to 2021-02-01
+2025-08-03 22:49:29,821 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:29,821 - ERROR - Error processing 2021-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:29,821 - INFO - Processing 2021-02: 2021-02-01 to 2021-03-01
+2025-08-03 22:49:30,212 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:30,213 - ERROR - Error processing 2021-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:30,213 - INFO - Processing 2021-03: 2021-03-01 to 2021-04-01
+2025-08-03 22:49:30,674 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:30,675 - ERROR - Error processing 2021-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:30,675 - INFO - Processing 2021-04: 2021-04-01 to 2021-05-01
+2025-08-03 22:49:31,120 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:31,120 - ERROR - Error processing 2021-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:31,120 - INFO - Processing 2021-05: 2021-05-01 to 2021-06-01
+2025-08-03 22:49:31,524 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:31,525 - ERROR - Error processing 2021-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:31,525 - INFO - Processing 2021-06: 2021-06-01 to 2021-07-01
+2025-08-03 22:49:31,926 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:31,927 - ERROR - Error processing 2021-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:31,927 - INFO - Processing 2021-07: 2021-07-01 to 2021-08-01
+2025-08-03 22:49:32,377 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:32,378 - ERROR - Error processing 2021-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:32,378 - INFO - Processing 2021-08: 2021-08-01 to 2021-09-01
+2025-08-03 22:49:32,817 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:32,817 - ERROR - Error processing 2021-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:32,818 - INFO - Processing 2021-09: 2021-09-01 to 2021-10-01
+2025-08-03 22:49:33,299 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:33,300 - ERROR - Error processing 2021-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:33,300 - INFO - Processing 2021-10: 2021-10-01 to 2021-11-01
+2025-08-03 22:49:33,618 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:33,619 - ERROR - Error processing 2021-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:33,619 - INFO - Processing 2021-11: 2021-11-01 to 2021-12-01
+2025-08-03 22:49:33,950 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:33,950 - ERROR - Error processing 2021-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:33,951 - INFO - Processing 2021-12: 2021-12-01 to 2022-01-01
+2025-08-03 22:49:34,476 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:34,477 - ERROR - Error processing 2021-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:34,477 - INFO - Submitted 0 export tasks for 2021
+2025-08-03 22:49:34,477 - INFO - Starting download for year 2022
+2025-08-03 22:49:34,477 - INFO - Processing 2022-01: 2022-01-01 to 2022-02-01
+2025-08-03 22:49:34,979 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:34,980 - ERROR - Error processing 2022-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:34,980 - INFO - Processing 2022-02: 2022-02-01 to 2022-03-01
+2025-08-03 22:49:35,443 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:35,443 - ERROR - Error processing 2022-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:35,443 - INFO - Processing 2022-03: 2022-03-01 to 2022-04-01
+2025-08-03 22:49:35,876 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:49:35,876 - ERROR - Error processing 2022-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:49:35,877 - INFO - Processing 2022-04: 2022-04-01 to 2022-05-01
+2025-08-03 22:52:13,471 - INFO - Created directories in: ./data
+2025-08-03 22:52:15,563 - INFO - Google Earth Engine initialized successfully
+2025-08-03 22:52:15,563 - INFO - Starting download for year 2020
+2025-08-03 22:52:15,564 - INFO - Processing 2020-01: 2020-01-01 to 2020-02-01
+2025-08-03 22:52:15,881 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:15,882 - ERROR - Error processing 2020-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:15,882 - INFO - Processing 2020-02: 2020-02-01 to 2020-03-01
+2025-08-03 22:52:16,403 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:16,403 - ERROR - Error processing 2020-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:16,404 - INFO - Processing 2020-03: 2020-03-01 to 2020-04-01
+2025-08-03 22:52:16,859 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:16,860 - ERROR - Error processing 2020-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:16,860 - INFO - Processing 2020-04: 2020-04-01 to 2020-05-01
+2025-08-03 22:52:17,273 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:17,273 - ERROR - Error processing 2020-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:17,273 - INFO - Processing 2020-05: 2020-05-01 to 2020-06-01
+2025-08-03 22:52:17,855 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:17,855 - ERROR - Error processing 2020-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:17,855 - INFO - Processing 2020-06: 2020-06-01 to 2020-07-01
+2025-08-03 22:52:18,210 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:18,211 - ERROR - Error processing 2020-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:18,211 - INFO - Processing 2020-07: 2020-07-01 to 2020-08-01
+2025-08-03 22:52:18,769 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:18,770 - ERROR - Error processing 2020-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:18,770 - INFO - Processing 2020-08: 2020-08-01 to 2020-09-01
+2025-08-03 22:52:19,210 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:19,210 - ERROR - Error processing 2020-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:19,211 - INFO - Processing 2020-09: 2020-09-01 to 2020-10-01
+2025-08-03 22:52:19,668 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:19,669 - ERROR - Error processing 2020-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:19,669 - INFO - Processing 2020-10: 2020-10-01 to 2020-11-01
+2025-08-03 22:52:19,973 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:19,973 - ERROR - Error processing 2020-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:19,973 - INFO - Processing 2020-11: 2020-11-01 to 2020-12-01
+2025-08-03 22:52:20,574 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:20,574 - ERROR - Error processing 2020-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:20,575 - INFO - Processing 2020-12: 2020-12-01 to 2021-01-01
+2025-08-03 22:52:20,880 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:20,880 - ERROR - Error processing 2020-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:20,881 - INFO - Submitted 0 export tasks for 2020
+2025-08-03 22:52:20,881 - INFO - Starting download for year 2021
+2025-08-03 22:52:20,881 - INFO - Processing 2021-01: 2021-01-01 to 2021-02-01
+2025-08-03 22:52:21,800 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:21,801 - ERROR - Error processing 2021-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:21,801 - INFO - Processing 2021-02: 2021-02-01 to 2021-03-01
+2025-08-03 22:52:22,213 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:22,213 - ERROR - Error processing 2021-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:22,213 - INFO - Processing 2021-03: 2021-03-01 to 2021-04-01
+2025-08-03 22:52:22,657 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:22,658 - ERROR - Error processing 2021-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:22,659 - INFO - Processing 2021-04: 2021-04-01 to 2021-05-01
+2025-08-03 22:52:23,136 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:23,136 - ERROR - Error processing 2021-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:23,137 - INFO - Processing 2021-05: 2021-05-01 to 2021-06-01
+2025-08-03 22:52:23,557 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:23,557 - ERROR - Error processing 2021-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:23,557 - INFO - Processing 2021-06: 2021-06-01 to 2021-07-01
+2025-08-03 22:52:24,554 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:24,554 - ERROR - Error processing 2021-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:24,554 - INFO - Processing 2021-07: 2021-07-01 to 2021-08-01
+2025-08-03 22:52:25,608 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:25,609 - ERROR - Error processing 2021-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:25,609 - INFO - Processing 2021-08: 2021-08-01 to 2021-09-01
+2025-08-03 22:52:26,056 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:26,056 - ERROR - Error processing 2021-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:26,057 - INFO - Processing 2021-09: 2021-09-01 to 2021-10-01
+2025-08-03 22:52:26,362 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:26,362 - ERROR - Error processing 2021-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:26,362 - INFO - Processing 2021-10: 2021-10-01 to 2021-11-01
+2025-08-03 22:52:26,660 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:26,660 - ERROR - Error processing 2021-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:26,661 - INFO - Processing 2021-11: 2021-11-01 to 2021-12-01
+2025-08-03 22:52:26,988 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:26,988 - ERROR - Error processing 2021-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:26,989 - INFO - Processing 2021-12: 2021-12-01 to 2022-01-01
+2025-08-03 22:52:27,851 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:27,852 - ERROR - Error processing 2021-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:27,852 - INFO - Submitted 0 export tasks for 2021
+2025-08-03 22:52:27,852 - INFO - Starting download for year 2022
+2025-08-03 22:52:27,853 - INFO - Processing 2022-01: 2022-01-01 to 2022-02-01
+2025-08-03 22:52:28,422 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:28,422 - ERROR - Error processing 2022-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:28,422 - INFO - Processing 2022-02: 2022-02-01 to 2022-03-01
+2025-08-03 22:52:28,856 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:28,856 - ERROR - Error processing 2022-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:28,856 - INFO - Processing 2022-03: 2022-03-01 to 2022-04-01
+2025-08-03 22:52:29,218 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:29,219 - ERROR - Error processing 2022-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:29,219 - INFO - Processing 2022-04: 2022-04-01 to 2022-05-01
+2025-08-03 22:52:30,316 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:30,317 - ERROR - Error processing 2022-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:30,317 - INFO - Processing 2022-05: 2022-05-01 to 2022-06-01
+2025-08-03 22:52:30,708 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:30,708 - ERROR - Error processing 2022-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:30,709 - INFO - Processing 2022-06: 2022-06-01 to 2022-07-01
+2025-08-03 22:52:31,168 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:31,168 - ERROR - Error processing 2022-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:31,169 - INFO - Processing 2022-07: 2022-07-01 to 2022-08-01
+2025-08-03 22:52:31,759 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:31,759 - ERROR - Error processing 2022-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:31,760 - INFO - Processing 2022-08: 2022-08-01 to 2022-09-01
+2025-08-03 22:52:32,529 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:32,529 - ERROR - Error processing 2022-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:32,530 - INFO - Processing 2022-09: 2022-09-01 to 2022-10-01
+2025-08-03 22:52:32,863 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:32,864 - ERROR - Error processing 2022-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:32,864 - INFO - Processing 2022-10: 2022-10-01 to 2022-11-01
+2025-08-03 22:52:33,712 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:33,713 - ERROR - Error processing 2022-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:33,713 - INFO - Processing 2022-11: 2022-11-01 to 2022-12-01
+2025-08-03 22:52:34,257 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:34,258 - ERROR - Error processing 2022-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:34,258 - INFO - Processing 2022-12: 2022-12-01 to 2023-01-01
+2025-08-03 22:52:34,760 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:34,760 - ERROR - Error processing 2022-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:34,760 - INFO - Submitted 0 export tasks for 2022
+2025-08-03 22:52:34,761 - INFO - Starting download for year 2023
+2025-08-03 22:52:34,761 - INFO - Processing 2023-01: 2023-01-01 to 2023-02-01
+2025-08-03 22:52:37,614 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:37,615 - ERROR - Error processing 2023-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:37,615 - INFO - Processing 2023-02: 2023-02-01 to 2023-03-01
+2025-08-03 22:52:37,961 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:37,961 - ERROR - Error processing 2023-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:37,962 - INFO - Processing 2023-03: 2023-03-01 to 2023-04-01
+2025-08-03 22:52:38,351 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:38,351 - ERROR - Error processing 2023-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:38,351 - INFO - Processing 2023-04: 2023-04-01 to 2023-05-01
+2025-08-03 22:52:38,687 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:52:38,688 - ERROR - Error processing 2023-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:52:38,688 - INFO - Processing 2023-05: 2023-05-01 to 2023-06-01
+2025-08-03 22:54:04,628 - INFO - Created directories in: ./data
+2025-08-03 22:54:07,343 - INFO - Google Earth Engine initialized successfully
+2025-08-03 22:54:07,344 - INFO - Starting download for year 2020
+2025-08-03 22:54:07,346 - INFO - Processing 2020-01: 2020-01-01 to 2020-02-01
+2025-08-03 22:54:08,209 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:08,209 - ERROR - Error processing 2020-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:08,210 - INFO - Processing 2020-02: 2020-02-01 to 2020-03-01
+2025-08-03 22:54:08,671 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:08,672 - ERROR - Error processing 2020-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:08,672 - INFO - Processing 2020-03: 2020-03-01 to 2020-04-01
+2025-08-03 22:54:09,119 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:09,120 - ERROR - Error processing 2020-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:09,120 - INFO - Processing 2020-04: 2020-04-01 to 2020-05-01
+2025-08-03 22:54:09,556 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:09,556 - ERROR - Error processing 2020-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:09,556 - INFO - Processing 2020-05: 2020-05-01 to 2020-06-01
+2025-08-03 22:54:10,417 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:10,417 - ERROR - Error processing 2020-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:10,417 - INFO - Processing 2020-06: 2020-06-01 to 2020-07-01
+2025-08-03 22:54:11,459 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:11,459 - ERROR - Error processing 2020-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:11,460 - INFO - Processing 2020-07: 2020-07-01 to 2020-08-01
+2025-08-03 22:54:11,973 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:11,973 - ERROR - Error processing 2020-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:11,974 - INFO - Processing 2020-08: 2020-08-01 to 2020-09-01
+2025-08-03 22:54:12,287 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:12,288 - ERROR - Error processing 2020-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:12,288 - INFO - Processing 2020-09: 2020-09-01 to 2020-10-01
+2025-08-03 22:54:12,712 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:12,712 - ERROR - Error processing 2020-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:12,712 - INFO - Processing 2020-10: 2020-10-01 to 2020-11-01
+2025-08-03 22:54:13,040 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:13,040 - ERROR - Error processing 2020-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:13,040 - INFO - Processing 2020-11: 2020-11-01 to 2020-12-01
+2025-08-03 22:54:13,677 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:13,677 - ERROR - Error processing 2020-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:13,677 - INFO - Processing 2020-12: 2020-12-01 to 2021-01-01
+2025-08-03 22:54:13,992 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:13,993 - ERROR - Error processing 2020-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:13,993 - INFO - Submitted 0 export tasks for 2020
+2025-08-03 22:54:13,993 - INFO - Starting download for year 2021
+2025-08-03 22:54:13,994 - INFO - Processing 2021-01: 2021-01-01 to 2021-02-01
+2025-08-03 22:54:14,680 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:14,681 - ERROR - Error processing 2021-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:14,681 - INFO - Processing 2021-02: 2021-02-01 to 2021-03-01
+2025-08-03 22:54:15,159 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:15,159 - ERROR - Error processing 2021-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:15,160 - INFO - Processing 2021-03: 2021-03-01 to 2021-04-01
+2025-08-03 22:54:15,697 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:15,698 - ERROR - Error processing 2021-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:15,698 - INFO - Processing 2021-04: 2021-04-01 to 2021-05-01
+2025-08-03 22:54:16,164 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:16,164 - ERROR - Error processing 2021-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:16,165 - INFO - Processing 2021-05: 2021-05-01 to 2021-06-01
+2025-08-03 22:54:16,725 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:16,726 - ERROR - Error processing 2021-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:16,726 - INFO - Processing 2021-06: 2021-06-01 to 2021-07-01
+2025-08-03 22:54:17,109 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:17,109 - ERROR - Error processing 2021-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:17,110 - INFO - Processing 2021-07: 2021-07-01 to 2021-08-01
+2025-08-03 22:54:17,681 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:17,682 - ERROR - Error processing 2021-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:17,682 - INFO - Processing 2021-08: 2021-08-01 to 2021-09-01
+2025-08-03 22:54:18,643 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:18,644 - ERROR - Error processing 2021-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:18,645 - INFO - Processing 2021-09: 2021-09-01 to 2021-10-01
+2025-08-03 22:54:19,137 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:19,138 - ERROR - Error processing 2021-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:19,138 - INFO - Processing 2021-10: 2021-10-01 to 2021-11-01
+2025-08-03 22:54:19,567 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:19,567 - ERROR - Error processing 2021-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:19,568 - INFO - Processing 2021-11: 2021-11-01 to 2021-12-01
+2025-08-03 22:54:20,006 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:20,006 - ERROR - Error processing 2021-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:20,006 - INFO - Processing 2021-12: 2021-12-01 to 2022-01-01
+2025-08-03 22:54:20,428 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:20,428 - ERROR - Error processing 2021-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:20,428 - INFO - Submitted 0 export tasks for 2021
+2025-08-03 22:54:20,428 - INFO - Starting download for year 2022
+2025-08-03 22:54:20,429 - INFO - Processing 2022-01: 2022-01-01 to 2022-02-01
+2025-08-03 22:54:20,843 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:20,843 - ERROR - Error processing 2022-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:20,844 - INFO - Processing 2022-02: 2022-02-01 to 2022-03-01
+2025-08-03 22:54:21,251 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:21,251 - ERROR - Error processing 2022-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:21,251 - INFO - Processing 2022-03: 2022-03-01 to 2022-04-01
+2025-08-03 22:54:21,828 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:21,828 - ERROR - Error processing 2022-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:21,828 - INFO - Processing 2022-04: 2022-04-01 to 2022-05-01
+2025-08-03 22:54:22,610 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:22,610 - ERROR - Error processing 2022-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:22,610 - INFO - Processing 2022-05: 2022-05-01 to 2022-06-01
+2025-08-03 22:54:23,169 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:23,169 - ERROR - Error processing 2022-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:23,169 - INFO - Processing 2022-06: 2022-06-01 to 2022-07-01
+2025-08-03 22:54:24,764 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:24,765 - ERROR - Error processing 2022-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:24,765 - INFO - Processing 2022-07: 2022-07-01 to 2022-08-01
+2025-08-03 22:54:27,662 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:27,663 - ERROR - Error processing 2022-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:27,663 - INFO - Processing 2022-08: 2022-08-01 to 2022-09-01
+2025-08-03 22:54:28,166 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:28,167 - ERROR - Error processing 2022-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:28,167 - INFO - Processing 2022-09: 2022-09-01 to 2022-10-01
+2025-08-03 22:54:28,943 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:28,944 - ERROR - Error processing 2022-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:28,944 - INFO - Processing 2022-10: 2022-10-01 to 2022-11-01
+2025-08-03 22:54:29,474 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:29,474 - ERROR - Error processing 2022-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:29,474 - INFO - Processing 2022-11: 2022-11-01 to 2022-12-01
+2025-08-03 22:54:30,153 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:30,154 - ERROR - Error processing 2022-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:30,154 - INFO - Processing 2022-12: 2022-12-01 to 2023-01-01
+2025-08-03 22:54:30,712 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:30,712 - ERROR - Error processing 2022-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:30,713 - INFO - Submitted 0 export tasks for 2022
+2025-08-03 22:54:30,713 - INFO - Starting download for year 2023
+2025-08-03 22:54:30,713 - INFO - Processing 2023-01: 2023-01-01 to 2023-02-01
+2025-08-03 22:54:31,145 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:31,145 - ERROR - Error processing 2023-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:31,146 - INFO - Processing 2023-02: 2023-02-01 to 2023-03-01
+2025-08-03 22:54:31,682 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:31,683 - ERROR - Error processing 2023-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:31,683 - INFO - Processing 2023-03: 2023-03-01 to 2023-04-01
+2025-08-03 22:54:32,269 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:32,269 - ERROR - Error processing 2023-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:32,269 - INFO - Processing 2023-04: 2023-04-01 to 2023-05-01
+2025-08-03 22:54:32,712 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:32,712 - ERROR - Error processing 2023-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:32,712 - INFO - Processing 2023-05: 2023-05-01 to 2023-06-01
+2025-08-03 22:54:35,615 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:35,615 - ERROR - Error processing 2023-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:35,616 - INFO - Processing 2023-06: 2023-06-01 to 2023-07-01
+2025-08-03 22:54:35,978 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:35,978 - ERROR - Error processing 2023-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:35,978 - INFO - Processing 2023-07: 2023-07-01 to 2023-08-01
+2025-08-03 22:54:36,510 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:36,511 - ERROR - Error processing 2023-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:36,511 - INFO - Processing 2023-08: 2023-08-01 to 2023-09-01
+2025-08-03 22:54:37,163 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:37,164 - ERROR - Error processing 2023-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:37,164 - INFO - Processing 2023-09: 2023-09-01 to 2023-10-01
+2025-08-03 22:54:37,645 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:37,646 - ERROR - Error processing 2023-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:37,646 - INFO - Processing 2023-10: 2023-10-01 to 2023-11-01
+2025-08-03 22:54:38,114 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:38,114 - ERROR - Error processing 2023-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:38,115 - INFO - Processing 2023-11: 2023-11-01 to 2023-12-01
+2025-08-03 22:54:38,591 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:38,592 - ERROR - Error processing 2023-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:38,592 - INFO - Processing 2023-12: 2023-12-01 to 2024-01-01
+2025-08-03 22:54:39,298 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:39,298 - ERROR - Error processing 2023-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:39,299 - INFO - Submitted 0 export tasks for 2023
+2025-08-03 22:54:39,299 - INFO - Starting download for year 2024
+2025-08-03 22:54:39,299 - INFO - Processing 2024-01: 2024-01-01 to 2024-02-01
+2025-08-03 22:54:39,683 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:39,683 - ERROR - Error processing 2024-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:39,684 - INFO - Processing 2024-02: 2024-02-01 to 2024-03-01
+2025-08-03 22:54:40,136 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:40,137 - ERROR - Error processing 2024-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:40,137 - INFO - Processing 2024-03: 2024-03-01 to 2024-04-01
+2025-08-03 22:54:41,068 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:41,069 - ERROR - Error processing 2024-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:41,069 - INFO - Processing 2024-04: 2024-04-01 to 2024-05-01
+2025-08-03 22:54:41,968 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:41,969 - ERROR - Error processing 2024-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:41,969 - INFO - Processing 2024-05: 2024-05-01 to 2024-06-01
+2025-08-03 22:54:42,457 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:42,458 - ERROR - Error processing 2024-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:42,458 - INFO - Processing 2024-06: 2024-06-01 to 2024-07-01
+2025-08-03 22:54:43,076 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:43,076 - ERROR - Error processing 2024-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:43,077 - INFO - Processing 2024-07: 2024-07-01 to 2024-08-01
+2025-08-03 22:54:43,574 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:43,575 - ERROR - Error processing 2024-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:43,575 - INFO - Processing 2024-08: 2024-08-01 to 2024-09-01
+2025-08-03 22:54:44,411 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:44,412 - ERROR - Error processing 2024-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:44,412 - INFO - Processing 2024-09: 2024-09-01 to 2024-10-01
+2025-08-03 22:54:45,218 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:45,219 - ERROR - Error processing 2024-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:45,219 - INFO - Processing 2024-10: 2024-10-01 to 2024-11-01
+2025-08-03 22:54:45,634 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:45,635 - ERROR - Error processing 2024-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:45,636 - INFO - Processing 2024-11: 2024-11-01 to 2024-12-01
+2025-08-03 22:54:46,086 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:46,086 - ERROR - Error processing 2024-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:46,087 - INFO - Processing 2024-12: 2024-12-01 to 2025-01-01
+2025-08-03 22:54:46,615 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:46,616 - ERROR - Error processing 2024-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:46,616 - INFO - Submitted 0 export tasks for 2024
+2025-08-03 22:54:46,616 - INFO - Starting download for year 2025
+2025-08-03 22:54:46,616 - INFO - Processing 2025-01: 2025-01-01 to 2025-02-01
+2025-08-03 22:54:47,154 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:47,154 - ERROR - Error processing 2025-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:47,155 - INFO - Processing 2025-02: 2025-02-01 to 2025-03-01
+2025-08-03 22:54:47,776 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:47,776 - ERROR - Error processing 2025-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:47,776 - INFO - Processing 2025-03: 2025-03-01 to 2025-04-01
+2025-08-03 22:54:48,659 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:48,660 - ERROR - Error processing 2025-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:48,661 - INFO - Processing 2025-04: 2025-04-01 to 2025-05-01
+2025-08-03 22:54:49,232 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:49,233 - ERROR - Error processing 2025-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:49,233 - INFO - Processing 2025-05: 2025-05-01 to 2025-06-01
+2025-08-03 22:54:50,096 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:50,097 - ERROR - Error processing 2025-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:50,097 - INFO - Processing 2025-06: 2025-06-01 to 2025-07-01
+2025-08-03 22:54:50,724 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:50,724 - ERROR - Error processing 2025-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:50,724 - INFO - Processing 2025-07: 2025-07-01 to 2025-08-01
+2025-08-03 22:54:51,660 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:51,661 - ERROR - Error processing 2025-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:51,661 - INFO - Processing 2025-08: 2025-08-01 to 2025-09-01
+2025-08-03 22:54:52,494 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:52,495 - ERROR - Error processing 2025-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:52,496 - INFO - Processing 2025-09: 2025-09-01 to 2025-10-01
+2025-08-03 22:54:53,116 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:53,117 - ERROR - Error processing 2025-09: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:53,117 - INFO - Processing 2025-10: 2025-10-01 to 2025-11-01
+2025-08-03 22:54:53,471 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:53,471 - ERROR - Error processing 2025-10: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:53,471 - INFO - Processing 2025-11: 2025-11-01 to 2025-12-01
+2025-08-03 22:54:54,224 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:54,224 - ERROR - Error processing 2025-11: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:54,224 - INFO - Processing 2025-12: 2025-12-01 to 2026-01-01
+2025-08-03 22:54:54,706 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:54:54,707 - ERROR - Error processing 2025-12: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:54:54,707 - INFO - Submitted 0 export tasks for 2025
+2025-08-03 22:54:54,707 - INFO - Total export tasks submitted: 0
+2025-08-03 22:54:54,707 - INFO - Check Google Earth Engine Tasks tab to monitor progress
+2025-08-03 22:58:46,038 - INFO - Created directories in: ./data
+2025-08-03 22:58:49,275 - INFO - Google Earth Engine initialized successfully
+2025-08-03 22:58:49,275 - INFO - Starting download for year 2020
+2025-08-03 22:58:49,275 - INFO - Processing 2020-01: 2020-01-01 to 2020-02-01
+2025-08-03 22:58:49,862 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:49,863 - ERROR - Error processing 2020-01: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:49,863 - INFO - Processing 2020-02: 2020-02-01 to 2020-03-01
+2025-08-03 22:58:50,594 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:50,594 - ERROR - Error processing 2020-02: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:50,594 - INFO - Processing 2020-03: 2020-03-01 to 2020-04-01
+2025-08-03 22:58:51,239 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:51,239 - ERROR - Error processing 2020-03: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:51,239 - INFO - Processing 2020-04: 2020-04-01 to 2020-05-01
+2025-08-03 22:58:51,695 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:51,696 - ERROR - Error processing 2020-04: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:51,696 - INFO - Processing 2020-05: 2020-05-01 to 2020-06-01
+2025-08-03 22:58:52,136 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:52,136 - ERROR - Error processing 2020-05: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:52,136 - INFO - Processing 2020-06: 2020-06-01 to 2020-07-01
+2025-08-03 22:58:53,220 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:53,220 - ERROR - Error processing 2020-06: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:53,221 - INFO - Processing 2020-07: 2020-07-01 to 2020-08-01
+2025-08-03 22:58:53,866 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:53,866 - ERROR - Error processing 2020-07: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:53,866 - INFO - Processing 2020-08: 2020-08-01 to 2020-09-01
+2025-08-03 22:58:54,517 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-08-03 22:58:54,517 - ERROR - Error processing 2020-08: Caller does not have required permission to use project 517222506229. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=517222506229 and then retry. Propagation of the new permission may take a few minutes.
+2025-08-03 22:58:54,517 - INFO - Processing 2020-09: 2020-09-01 to 2020-10-01

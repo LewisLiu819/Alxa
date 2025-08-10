@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-100 hover:bg-secondary-200 text-secondary-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md border border-gray-200;
+  }
+}
+
+/* Leaflet map styling */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px !important;
+}
+
+/* ——— 覆盖层与底图融合：multiply 模式能让植被色与地形自然叠加 ——— */
+.leaflet-overlay-pane canvas,
+.leaflet-overlay-pane svg {
+  mix-blend-mode: multiply;
+  filter: saturate(105%) contrast(95%);
+}
+
+/* 柔化网格整体边缘，减弱“色块边界”突兀感（可选） */
+.ndvi-layer-mask {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  /* 更轻的径向渐变遮罩，避免整体偏灰 */
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 72%, rgba(0,0,0,0.06) 100%);
+  mix-blend-mode: multiply;
+}
