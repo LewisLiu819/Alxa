@@ -13,20 +13,30 @@ from datetime import datetime
 import os
 
 def check_file_integrity(file_path: Path) -> bool:
-    """Quick integrity check for TIFF files"""
-    try:
-        with rasterio.open(file_path) as dataset:
-            # Try to read basic metadata
-            _ = dataset.bounds
-            _ = dataset.crs
-            _ = dataset.width
-            _ = dataset.height
-            # Try to read a small sample of data
-            sample = dataset.read(1, window=((0, min(10, dataset.height)), 
-                                           (0, min(10, dataset.width))))
-        return True
-    except Exception:
-        return False
+    """Quick integrity check for TIFF files with retry logic"""
+    import time
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            with rasterio.open(file_path) as dataset:
+                # Try to read basic metadata
+                _ = dataset.bounds
+                _ = dataset.crs
+                _ = dataset.width
+                _ = dataset.height
+                # Try to read a small sample of data
+                sample = dataset.read(1, window=((0, min(10, dataset.height)), 
+                                               (0, min(10, dataset.width))))
+            return True
+        except Exception as e:
+            if attempt < max_retries - 1:
+                print(f"    Retry {attempt + 1}/{max_retries} after error: {str(e)[:50]}...")
+                time.sleep(0.5)  # Brief pause before retry
+                continue
+            else:
+                print(f"    Final attempt failed: {str(e)[:100]}")
+                return False
+    return False
 
 def validate_geographic_bounds(dataset) -> bool:
     """Validate that the dataset covers the required Tenggeli Desert area"""
@@ -90,11 +100,13 @@ def process_tiff_to_web_tiles(input_file: Path, output_dir: Path, tile_size: int
             # Create simple processed version (normalize to 0-255 for visualization)
             processed_data = np.full_like(data, 0, dtype=np.uint8)
             if len(valid_data) > 0:
-                # Normalize NDVI values (-1 to 1) to 0-255
-                normalized = ((data + 1) / 2 * 255).astype(np.uint8)
+                # Normalize NDVI values (-1 to 1) to 0-255, handling NaN values
+                with np.errstate(invalid='ignore'):
+                    normalized = ((data + 1) / 2 * 255)
+                # Only convert valid values to uint8, avoiding NaN cast warning
                 processed_data = np.where(
                     (data >= -1) & (data <= 1) & (~np.isnan(data)),
-                    normalized,
+                    normalized.astype(np.uint8),
                     0  # No data value
                 )
             
