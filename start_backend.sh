@@ -6,6 +6,15 @@ echo "🚀 Starting Tenggeli Desert Monitoring Backend..."
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$PROJECT_ROOT"
 
+# Check and mount Google Drive if needed
+echo "📂 Checking Google Drive mount..."
+if [ -f "./mount_drive.sh" ]; then
+    ./mount_drive.sh
+else
+    echo "⚠️  mount_drive.sh not found, skipping drive check"
+fi
+echo ""
+
 # Check if virtual environment exists, create if not
 if [ ! -d "backend/venv" ]; then
     echo "📦 Creating virtual environment..."

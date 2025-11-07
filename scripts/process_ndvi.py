@@ -174,7 +174,9 @@ def create_time_series_index(processed_dir: Path):
 
 def main():
     parser = argparse.ArgumentParser(description='Process NDVI TIFF files for web application')
-    parser.add_argument('--input-dir', default='../data/raw/tenggeli_data',
+    # Default to Google Drive path, allow override with environment variable or command line
+    default_input = os.getenv('NDVI_RAW_DATA_PATH', '/mnt/g/我的云端硬盘/tenggeli_data')
+    parser.add_argument('--input-dir', default=default_input,
                        help='Input directory with TIFF files')
     parser.add_argument('--output-dir', default='../data/processed',
                        help='Output directory for processed files')

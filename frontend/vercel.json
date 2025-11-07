@@ -1,0 +1,34 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "VITE_API_BASE_URL": "@vite_api_base_url",
+    "VITE_APP_ENV": "production",
+    "VITE_MAP_DEFAULT_LAT": "38.25",
+    "VITE_MAP_DEFAULT_LON": "104.1",
+    "VITE_MAP_DEFAULT_ZOOM": "9",
+    "VITE_DATA_START_YEAR": "2015",
+    "VITE_DATA_END_YEAR": "2024"
+  }
+}
+

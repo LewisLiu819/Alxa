@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from app.routers import ndvi
 from app.config.settings import settings
 from app.database import init_db
@@ -13,19 +15,36 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Disable debug mode docs in production
 app = FastAPI(
     title="Tenggeli Desert Monitoring API",
     description="API for environmental monitoring and vegetation analysis",
     version="1.0.0",
-    debug=settings.debug
+    debug=settings.debug,
+    docs_url="/docs" if settings.debug else None,
+    redoc_url="/redoc" if settings.debug else None,
+    openapi_url="/openapi.json" if settings.debug else None
 )
 
+# Security: Add trusted host middleware in production
+if not settings.debug:
+    app.add_middleware(
+        TrustedHostMiddleware,
+        allowed_hosts=["*"]  # Configure with specific domains in production
+    )
+
+# Add GZIP compression for responses
+app.add_middleware(GZipMiddleware, minimum_size=1000)
+
+# CORS configuration
+logger.info(f"Configuring CORS with origins: {settings.cors_origins}")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],  # Restrict to needed methods
     allow_headers=["*"],
+    max_age=600,  # Cache preflight requests for 10 minutes
 )
 
 app.include_router(ndvi.router, prefix="/api/v1", tags=["ndvi"])

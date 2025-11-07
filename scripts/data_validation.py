@@ -152,7 +152,9 @@ def generate_report(df: pd.DataFrame, output_file: str = None):
 
 def main():
     parser = argparse.ArgumentParser(description='Validate Tenggeli NDVI data files')
-    parser.add_argument('--data-path', default='../data/raw/tenggeli_data', 
+    # Default to Google Drive path, allow override with environment variable or command line
+    default_data_path = os.getenv('NDVI_RAW_DATA_PATH', '/mnt/g/我的云端硬盘/tenggeli_data')
+    parser.add_argument('--data-path', default=default_data_path, 
                        help='Path to data directory')
     parser.add_argument('--output', help='Output CSV file for detailed report')
     
