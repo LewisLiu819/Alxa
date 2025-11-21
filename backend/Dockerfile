@@ -28,7 +28,7 @@ WORKDIR /app
 FROM base as dependencies
 
 # Copy requirements and install Python dependencies
-COPY requirements.txt .
+COPY backend/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Stage 3: Production
@@ -46,7 +46,7 @@ RUN useradd -m -u 1000 appuser && \
 WORKDIR /app
 
 # Copy application code
-COPY --chown=appuser:appuser ./app ./app
+COPY --chown=appuser:appuser ./backend/app ./app
 COPY --chown=appuser:appuser ./scripts ./scripts
 
 # Switch to non-root user
