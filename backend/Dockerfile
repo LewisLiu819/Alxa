@@ -65,7 +65,6 @@ WORKDIR /app
 
 # Copy application code
 COPY --chown=appuser:appuser ./app ./app
-COPY --chown=appuser:appuser ./scripts ./scripts
 
 # Switch to non-root user
 USER appuser
