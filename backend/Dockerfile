@@ -34,6 +34,24 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Stage 3: Production
 FROM base as production
 
+# Install runtime dependencies for GDAL/rasterio
+RUN apt-get update && apt-get install -y \
+    libexpat1 \
+    gdal-bin \
+    libgdal32 \
+    libproj25 \
+    libsqlite3-0 \
+    libtiff6 \
+    libcurl4 \
+    libxml2 \
+    libgeos-c1v5 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set GDAL environment variables for production
+ENV GDAL_CONFIG=/usr/bin/gdal-config
+ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
+ENV C_INCLUDE_PATH=/usr/include/gdal
+
 # Copy installed dependencies from dependencies stage
 COPY --from=dependencies /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=dependencies /usr/local/bin /usr/local/bin
