@@ -1,8 +1,5 @@
-# Multi-stage Dockerfile for Tenggeli Desert Monitoring Backend
 
-# Stage 1: Base image with dependencies
 FROM python:3.11-slim as base
-
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -61,4 +58,3 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 # Run the application
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-
