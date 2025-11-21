@@ -2,3 +2,9 @@ earthengine-api
 geemap
 folium
 rasterio
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+loguru
+requests
