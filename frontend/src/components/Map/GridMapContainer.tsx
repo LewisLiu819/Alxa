@@ -458,18 +458,22 @@ const GridMapContainer: React.FC<GridMapProps> = ({
     return () => { isCancelled = true; };
   }, [gridCells, selectedDate, ndviCache]);
 
-  // Desert-optimized NDVI color mapping for 0-25% vegetation range
+  // Desert-optimized vegetation color mapping for 0-25% vegetation range
   const getNdviHeatmapColor = (
-    ndvi: number
+    vegetationValue: number
   ): string => {
     // Safety checks for input values
-    if (typeof ndvi !== 'number' || isNaN(ndvi)) {
-      console.warn('Invalid NDVI value:', ndvi);
-      ndvi = 0;
+    if (typeof vegetationValue !== 'number' || isNaN(vegetationValue)) {
+      console.warn('Invalid vegetation value:', vegetationValue);
+      vegetationValue = 0;
     }
 
-    // Convert NDVI to percentage and focus on 0-25% range
-    const vegetationPercent = Math.max(0, Math.min(100, ndvi * 100));
+    // Normalize to 0-1 first so callers can supply either a ratio or percentage
+    const normalized = Math.max(
+      0,
+      Math.min(1, vegetationValue > 1 ? vegetationValue / 100 : vegetationValue)
+    );
+    const vegetationPercent = normalized * 100;
     
     let r: number, g: number, b: number;
 
@@ -683,7 +687,7 @@ const GridMapContainer: React.FC<GridMapProps> = ({
           }
           
           // Generate color with proper alpha embedded
-          const fillColor = getNdviHeatmapColor(cell.ndvi);
+          const fillColor = getNdviHeatmapColor(cell.vegetationPercent / 100);
           
           // Use the calculated opacity as fillOpacity (this controls the final render opacity)
           const fillOpacity = baseFillOpacity;
@@ -1008,14 +1012,14 @@ const GridMapContainer: React.FC<GridMapProps> = ({
         {/* Desert vegetation heat map gradient */}
         <div className="mb-3">
           <div className="flex items-center gap-1">
-            <div className="flex flex-col gap-1">
-              <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.25) }}></div>
-              <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.20) }}></div>
-              <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.15) }}></div>
-              <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.10) }}></div>
-              <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.05) }}></div>
-              <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.02) }}></div>
-            </div>
+              <div className="flex flex-col gap-1">
+                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.25) }}></div>
+                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.20) }}></div>
+                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.15) }}></div>
+                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.10) }}></div>
+                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.05) }}></div>
+                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.02) }}></div>
+              </div>
             <div className="flex flex-col gap-1 text-xs text-gray-600 ml-1">
               <div className="h-2 flex items-center">25%</div>
               <div className="h-2 flex items-center">20%</div>
