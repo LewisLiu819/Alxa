@@ -1,0 +1,705 @@
+2025-11-21T06:02:49.000000000Z [inf]  Starting Container
+2025-11-21T06:02:51.206878541Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:51.206881806Z [err]  Traceback (most recent call last):
+2025-11-21T06:02:51.206889836Z [err]      )
+2025-11-21T06:02:51.206891402Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:02:51.206893432Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:02:51.206899918Z [err]      ^
+2025-11-21T06:02:51.206900884Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:02:51.206900885Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:02:51.206904521Z [err]      sys.exit(main())
+2025-11-21T06:02:51.206908781Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:02:51.206910294Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:02:51.206915315Z [err]               ~~~~^^
+2025-11-21T06:02:51.206916518Z [err]          app,
+2025-11-21T06:02:51.206917586Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:02:51.206919358Z [err]      run(
+2025-11-21T06:02:51.206924981Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:02:51.206927163Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:02:51.206927213Z [err]          ^^^^
+2025-11-21T06:02:51.206927590Z [err]      ~~~^
+2025-11-21T06:02:51.206932372Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:02:51.206935759Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:51.206936837Z [err]      ...<46 lines>...
+2025-11-21T06:02:51.206938510Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:51.206944806Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:02:51.210824997Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:02:51.210829181Z [err]      server.run()
+2025-11-21T06:02:51.210832951Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:02:51.210837316Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:02:51.210841457Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:02:51.210846000Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:02:51.210850590Z [err]      return runner.run(main)
+2025-11-21T06:02:51.210855133Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:02:51.210859648Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:02:51.210864456Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:02:51.210868821Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:02:51.210873406Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:02:51.210878159Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:02:51.210883143Z [err]      await self._serve(sockets)
+2025-11-21T06:02:51.210888259Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:02:51.210894115Z [err]      config.load()
+2025-11-21T06:02:51.210898943Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:02:51.210903834Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:02:51.210907670Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:02:51.210912268Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:02:51.210919691Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:02:51.213463278Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:02:51.213467686Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:02:51.213472160Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:02:51.213476173Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:51.213481655Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:02:51.213487386Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:02:51.213493436Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:02:51.213498785Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:02:51.213504963Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:02:51.213511015Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:02:51.213518242Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:02:51.213526955Z [err]      from app.routers import ndvi
+2025-11-21T06:02:51.213532899Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:02:51.213540490Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:02:51.213546199Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:02:51.213563411Z [err]      import rasterio
+2025-11-21T06:02:51.213570685Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:02:51.213577578Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:02:51.213583089Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:02:53.205496058Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:02:53.205499492Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:02:53.205512186Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:02:53.205513158Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:02:53.205522872Z [err]      await self._serve(sockets)
+2025-11-21T06:02:53.205609722Z [err]  Traceback (most recent call last):
+2025-11-21T06:02:53.205616298Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:02:53.205624076Z [err]      sys.exit(main())
+2025-11-21T06:02:53.205630029Z [err]               ~~~~^^
+2025-11-21T06:02:53.205636047Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:02:53.205642148Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:02:53.205648290Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:53.205654356Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:02:53.205661824Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:02:53.205668079Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:02:53.205673877Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:02:53.205680697Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:53.205686512Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:02:53.205692468Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:02:53.205698048Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:02:53.205703783Z [err]      run(
+2025-11-21T06:02:53.205711468Z [err]      ~~~^
+2025-11-21T06:02:53.205721196Z [err]          app,
+2025-11-21T06:02:53.205728358Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:02:53.205728731Z [err]          ^^^^
+2025-11-21T06:02:53.205735671Z [err]      ...<46 lines>...
+2025-11-21T06:02:53.205742027Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:02:53.205743622Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:02:53.205749686Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:02:53.205752076Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:53.205755258Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:02:53.205761997Z [err]      )
+2025-11-21T06:02:53.205763324Z [err]      from app.routers import ndvi
+2025-11-21T06:02:53.205771530Z [err]      ^
+2025-11-21T06:02:53.205778558Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:02:53.205785421Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:02:53.205789995Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:02:53.205796096Z [err]      import rasterio
+2025-11-21T06:02:53.205803592Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:02:53.205808630Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:02:53.205860935Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:02:53.205868794Z [err]      config.load()
+2025-11-21T06:02:53.205876719Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:02:53.205882118Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:02:53.205886746Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:02:53.205892044Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:02:53.205896349Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:02:53.205940817Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:02:53.205945395Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:02:53.205949706Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:02:53.205954814Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:53.205959202Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:02:53.205964514Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:02:53.205969195Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:02:53.205973197Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:02:53.206082516Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:02:53.206087896Z [err]      server.run()
+2025-11-21T06:02:53.206096516Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:02:53.206102651Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:02:53.206109231Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:02:53.206117568Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:02:53.206123127Z [err]      return runner.run(main)
+2025-11-21T06:02:53.206128989Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:02:53.206135343Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:02:55.236821192Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:02:55.236831370Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:55.236840245Z [err]      )
+2025-11-21T06:02:55.236846166Z [err]      ^
+2025-11-21T06:02:55.236862599Z [err]  Traceback (most recent call last):
+2025-11-21T06:02:55.236871968Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:02:55.236878780Z [err]      sys.exit(main())
+2025-11-21T06:02:55.236882502Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:02:55.236885428Z [err]               ~~~~^^
+2025-11-21T06:02:55.236896323Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:02:55.236904891Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:02:55.236911243Z [err]      run(
+2025-11-21T06:02:55.236919365Z [err]      ~~~^
+2025-11-21T06:02:55.236929668Z [err]          app,
+2025-11-21T06:02:55.236937999Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:02:55.236938187Z [err]          ^^^^
+2025-11-21T06:02:55.236947110Z [err]      ...<46 lines>...
+2025-11-21T06:02:55.236947595Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:02:55.236953829Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:55.236962357Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:02:55.236967871Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:02:55.236973908Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:02:55.236981687Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:02:55.236987457Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:55.240621290Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:02:55.240638338Z [err]      return runner.run(main)
+2025-11-21T06:02:55.240648413Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:02:55.240658584Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:02:55.240667798Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:02:55.240677904Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:02:55.240686307Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:02:55.240697020Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:02:55.240706096Z [err]      await self._serve(sockets)
+2025-11-21T06:02:55.240714907Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:02:55.240723691Z [err]      config.load()
+2025-11-21T06:02:55.240732505Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:02:55.240740529Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:02:55.240748602Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:02:55.240756466Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:02:55.240764978Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:02:55.240805329Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:02:55.240811727Z [err]      server.run()
+2025-11-21T06:02:55.240820691Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:02:55.240828678Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:02:55.240835271Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:02:55.243434157Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:02:55.243444531Z [err]      from app.routers import ndvi
+2025-11-21T06:02:55.243478660Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:02:55.243498179Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:02:55.243505135Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:02:55.243528481Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:02:55.243528865Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:02:55.243539721Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:02:55.243541482Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:02:55.243550470Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:02:55.243550670Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:55.243565519Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:02:55.244100865Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:02:55.244109634Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:02:55.244115663Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:02:55.244122125Z [err]      import rasterio
+2025-11-21T06:02:55.244129423Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:02:55.244138506Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:02:55.244146027Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:02:57.668438509Z [err]  Traceback (most recent call last):
+2025-11-21T06:02:57.672222025Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:02:57.672224884Z [err]          app,
+2025-11-21T06:02:57.672235436Z [err]          ^^^^
+2025-11-21T06:02:57.672237107Z [err]      sys.exit(main())
+2025-11-21T06:02:57.672242649Z [err]      ...<46 lines>...
+2025-11-21T06:02:57.672245697Z [err]               ~~~~^^
+2025-11-21T06:02:57.672254234Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:02:57.672254597Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:02:57.672262819Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:57.672264652Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:02:57.672270948Z [err]      )
+2025-11-21T06:02:57.672273602Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:57.672277840Z [err]      ^
+2025-11-21T06:02:57.672282042Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:02:57.672287960Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:02:57.672290843Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:02:57.672296774Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:02:57.672302660Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:02:57.672309602Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:57.672316167Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:02:57.672321876Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:02:57.672327371Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:02:57.672335741Z [err]      run(
+2025-11-21T06:02:57.672341666Z [err]      ~~~^
+2025-11-21T06:02:57.675513022Z [err]      await self._serve(sockets)
+2025-11-21T06:02:57.675517734Z [err]      server.run()
+2025-11-21T06:02:57.675528451Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:02:57.675533852Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:02:57.675536414Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:02:57.675540217Z [err]      config.load()
+2025-11-21T06:02:57.675545595Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:02:57.675545680Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:02:57.675550589Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:02:57.675556317Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:02:57.675561262Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:02:57.675562106Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:02:57.675569308Z [err]      return runner.run(main)
+2025-11-21T06:02:57.675573237Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:02:57.675577198Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:02:57.675579401Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:02:57.675584360Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:02:57.675591629Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:02:57.675598092Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:02:57.675604169Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:02:57.675610172Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:02:57.678358300Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:02:57.678369876Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:02:57.678375825Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:02:57.678386801Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:02:57.678394847Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:02:57.678403535Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:02:57.678416655Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:02:57.678422444Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:02:57.678429360Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:02:57.678434982Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:02:57.678440744Z [err]      from app.routers import ndvi
+2025-11-21T06:02:57.678450510Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:02:57.678459609Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:02:57.678466940Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:02:57.678471611Z [err]      import rasterio
+2025-11-21T06:02:57.678483494Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:02:57.678486963Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:02:57.678495599Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:03:00.302716368Z [err]  Traceback (most recent call last):
+2025-11-21T06:03:00.302730473Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:03:00.302738764Z [err]      sys.exit(main())
+2025-11-21T06:03:00.302757270Z [err]               ~~~~^^
+2025-11-21T06:03:00.302764764Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:03:00.302772789Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:03:00.302780221Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:00.302787816Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:03:00.302793853Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:03:00.302800795Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:03:00.302807130Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:03:00.302813640Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:00.302820179Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:03:00.302827457Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:03:00.302834663Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:03:00.302841433Z [err]      run(
+2025-11-21T06:03:00.302847920Z [err]      ~~~^
+2025-11-21T06:03:00.302855173Z [err]          app,
+2025-11-21T06:03:00.302867134Z [err]          ^^^^
+2025-11-21T06:03:00.302874389Z [err]      ...<46 lines>...
+2025-11-21T06:03:00.302880835Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:03:00.302887834Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:00.302894912Z [err]      )
+2025-11-21T06:03:00.302902369Z [err]      ^
+2025-11-21T06:03:00.306283989Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:03:00.306296552Z [err]      server.run()
+2025-11-21T06:03:00.306299182Z [err]      await self._serve(sockets)
+2025-11-21T06:03:00.306304672Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:03:00.306310037Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:03:00.306312556Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:03:00.306317888Z [err]      config.load()
+2025-11-21T06:03:00.306320486Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:03:00.306324861Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:03:00.306329026Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:03:00.306332193Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:03:00.306337727Z [err]      return runner.run(main)
+2025-11-21T06:03:00.306338642Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:03:00.306345674Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:03:00.306346609Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:03:00.306354286Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:03:00.306355490Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:03:00.306361397Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:03:00.306366933Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:03:00.306374924Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:03:00.306381537Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:03:00.311262852Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:03:00.311275354Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:03:00.311283155Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:03:00.311290489Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:00.311314022Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:03:00.311322619Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:03:00.311330071Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:03:00.311337764Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:03:00.311339786Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:03:00.311346898Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:03:00.311356282Z [err]      from app.routers import ndvi
+2025-11-21T06:03:00.311356434Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:03:00.311366731Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:03:00.311374847Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:03:00.311383318Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:03:00.311390340Z [err]      import rasterio
+2025-11-21T06:03:00.311397018Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:03:00.311403891Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:03:00.311409761Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:03:03.312551135Z [err]      ~~~^
+2025-11-21T06:03:03.312562997Z [err]          app,
+2025-11-21T06:03:03.312572492Z [err]          ^^^^
+2025-11-21T06:03:03.312583847Z [err]      ...<46 lines>...
+2025-11-21T06:03:03.312592889Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:03:03.312600251Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:03.312607333Z [err]      )
+2025-11-21T06:03:03.312614362Z [err]      ^
+2025-11-21T06:03:03.312650831Z [err]  Traceback (most recent call last):
+2025-11-21T06:03:03.312656431Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:03:03.312662330Z [err]      sys.exit(main())
+2025-11-21T06:03:03.312668691Z [err]               ~~~~^^
+2025-11-21T06:03:03.312675888Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:03:03.312683204Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:03:03.312693607Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:03.312701162Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:03:03.312708287Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:03:03.312714754Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:03:03.312720814Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:03:03.312726782Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:03.312732255Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:03:03.312739305Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:03:03.312745305Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:03:03.312751471Z [err]      run(
+2025-11-21T06:03:03.316308675Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:03:03.316314203Z [err]      server.run()
+2025-11-21T06:03:03.316320559Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:03:03.316325965Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:03:03.316331447Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:03:03.316337077Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:03:03.316343445Z [err]      return runner.run(main)
+2025-11-21T06:03:03.316351105Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:03:03.316358240Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:03:03.316363937Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:03:03.316369608Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:03:03.316376023Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:03:03.316382614Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:03:03.316389395Z [err]      await self._serve(sockets)
+2025-11-21T06:03:03.316395581Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:03:03.316405779Z [err]      config.load()
+2025-11-21T06:03:03.316412073Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:03:03.316418389Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:03:03.316423933Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:03:03.316429399Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:03:03.316434859Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:03:03.317230197Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:03:03.317239155Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:03:03.317240834Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:03:03.317245729Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:03:03.317248995Z [err]      import rasterio
+2025-11-21T06:03:03.317253245Z [err]      from app.routers import ndvi
+2025-11-21T06:03:03.317256280Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:03:03.317264689Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:03:03.317265293Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:03:03.317265771Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:03.317273998Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:03:03.317276811Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:03:03.317282051Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:03:03.317284480Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:03:03.317290886Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:03:03.317294110Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:03:03.317299876Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:03:03.317329078Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:03:03.317339036Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:03:06.355559316Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:03:06.355569675Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:03:06.355580316Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:03:06.355587110Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:03:06.355591638Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:06.355592839Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:06.355593809Z [err]  Traceback (most recent call last):
+2025-11-21T06:03:06.355601650Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:03:06.355601911Z [err]      run(
+2025-11-21T06:03:06.355604065Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:03:06.355613412Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:03:06.355614591Z [err]      sys.exit(main())
+2025-11-21T06:03:06.355615916Z [err]      )
+2025-11-21T06:03:06.355616172Z [err]      ~~~^
+2025-11-21T06:03:06.355623946Z [err]               ~~~~^^
+2025-11-21T06:03:06.355627242Z [err]          app,
+2025-11-21T06:03:06.355638164Z [err]          ^^^^
+2025-11-21T06:03:06.355639313Z [err]      ^
+2025-11-21T06:03:06.355646365Z [err]      ...<46 lines>...
+2025-11-21T06:03:06.355652910Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:03:06.355655988Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:03:06.355660257Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:03:06.355666808Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:06.355673013Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:03:06.359416949Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:03:06.359428263Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:03:06.359436613Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:06.359441698Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:03:06.359446728Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:03:06.359454130Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:03:06.359461495Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:03:06.359463211Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:03:06.359470493Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:03:06.359472050Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:03:06.359479502Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:03:06.359488824Z [err]      import rasterio
+2025-11-21T06:03:06.359496169Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:03:06.359502841Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:03:06.359549014Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:03:06.359564751Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:03:06.359572678Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:03:06.359580359Z [err]      from app.routers import ndvi
+2025-11-21T06:03:06.359655688Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:03:06.359736462Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:03:06.359744069Z [err]      server.run()
+2025-11-21T06:03:06.359749536Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:03:06.359753810Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:03:06.359759016Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:03:06.359764644Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:03:06.359771175Z [err]      return runner.run(main)
+2025-11-21T06:03:06.359777546Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:03:06.359782344Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:03:06.359787301Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:03:06.359791500Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:03:06.359796807Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:03:06.359802639Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:03:06.359808059Z [err]      await self._serve(sockets)
+2025-11-21T06:03:06.359813533Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:03:06.359818268Z [err]      config.load()
+2025-11-21T06:03:06.359822887Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:03:06.359828835Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:03:06.359833358Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:03:06.359837862Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:03:06.359842917Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:03:08.430174849Z [err]  Traceback (most recent call last):
+2025-11-21T06:03:08.430179311Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:03:08.430184965Z [err]      sys.exit(main())
+2025-11-21T06:03:08.430190200Z [err]               ~~~~^^
+2025-11-21T06:03:08.430194100Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:03:08.430198483Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:03:08.430202641Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:08.430208025Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:03:08.430214905Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:03:08.430221387Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:03:08.430227408Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:03:08.430233795Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:08.430240292Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:03:08.430246154Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:03:08.430251377Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:03:08.430257614Z [err]      run(
+2025-11-21T06:03:08.430265852Z [err]      ~~~^
+2025-11-21T06:03:08.430273748Z [err]          app,
+2025-11-21T06:03:08.430290318Z [err]          ^^^^
+2025-11-21T06:03:08.430297191Z [err]      ...<46 lines>...
+2025-11-21T06:03:08.430303649Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:03:08.430311899Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:08.430323152Z [err]      )
+2025-11-21T06:03:08.430330367Z [err]      ^
+2025-11-21T06:03:08.704847504Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:03:08.704855118Z [err]      server.run()
+2025-11-21T06:03:08.704862443Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:03:08.704870738Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:03:08.704878659Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:03:08.704885965Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:03:08.704893524Z [err]      return runner.run(main)
+2025-11-21T06:03:08.704901162Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:03:08.704908403Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:03:08.704916438Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:03:08.704923726Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:03:08.704931258Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:03:08.704939234Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:03:08.704948057Z [err]      await self._serve(sockets)
+2025-11-21T06:03:08.704955761Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:03:08.704963378Z [err]      config.load()
+2025-11-21T06:03:08.704970972Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:03:08.704978405Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:03:08.704985702Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:03:08.704992573Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:03:08.705000161Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:03:08.705191207Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:03:08.705199110Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:03:08.705206355Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:03:08.705214048Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:08.705222245Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:03:08.705234471Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:03:08.705242786Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:03:08.705258402Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:03:08.705268010Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:03:08.705276437Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:03:08.705286153Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:03:08.705295046Z [err]      from app.routers import ndvi
+2025-11-21T06:03:08.705303577Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:03:08.705313651Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:03:08.705322566Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:03:08.705331453Z [err]      import rasterio
+2025-11-21T06:03:08.705342048Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:03:08.705350191Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:03:08.705357908Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:03:11.294196199Z [err]          app,
+2025-11-21T06:03:11.294204275Z [err]          ^^^^
+2025-11-21T06:03:11.294210971Z [err]      ...<46 lines>...
+2025-11-21T06:03:11.294213135Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:03:11.294217169Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:03:11.294222873Z [err]      sys.exit(main())
+2025-11-21T06:03:11.294224794Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:11.294229934Z [err]               ~~~~^^
+2025-11-21T06:03:11.294248752Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:03:11.294260325Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:03:11.294267311Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:11.294282414Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:03:11.294288495Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:03:11.294295962Z [err]      run(
+2025-11-21T06:03:11.294304471Z [err]      ~~~^
+2025-11-21T06:03:11.294307587Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:03:11.294322360Z [err]      )
+2025-11-21T06:03:11.294326687Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:11.294329629Z [err]      ^
+2025-11-21T06:03:11.294335361Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:03:11.294342025Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:03:11.294345019Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:03:11.294382290Z [err]  Traceback (most recent call last):
+2025-11-21T06:03:11.294449532Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:03:11.298785669Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:03:11.298790208Z [err]      server.run()
+2025-11-21T06:03:11.298794841Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:03:11.298800179Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:03:11.298806338Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:03:11.298812202Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:03:11.298817778Z [err]      return runner.run(main)
+2025-11-21T06:03:11.298823711Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:03:11.298830047Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:03:11.298837747Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:03:11.298842453Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:03:11.298847704Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:03:11.298852995Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:03:11.298860415Z [err]      await self._serve(sockets)
+2025-11-21T06:03:11.298866764Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:03:11.298872805Z [err]      config.load()
+2025-11-21T06:03:11.298879116Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:03:11.298885096Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:03:11.298891428Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:03:11.298898078Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:03:11.298904159Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:03:11.299013104Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:03:11.299017564Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:03:11.299027050Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:03:11.299031896Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:11.299036916Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:03:11.299041692Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:03:11.299047538Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:03:11.299052467Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:03:11.299059397Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:03:11.299064305Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:03:11.299069850Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:03:11.299076467Z [err]      from app.routers import ndvi
+2025-11-21T06:03:11.299081482Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:03:11.299086501Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:03:11.299091455Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:03:11.299096364Z [err]      import rasterio
+2025-11-21T06:03:11.299100819Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:03:11.299106068Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:03:11.299112254Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:03:14.307145756Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:03:14.307146999Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:03:14.307149343Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:03:14.307157787Z [err]      server.run()
+2025-11-21T06:03:14.307161990Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:03:14.307162068Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:03:14.307166652Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:03:14.307170677Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:03:14.307173132Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:03:14.307177868Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:03:14.307224866Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:03:14.307228930Z [err]      return runner.run(main)
+2025-11-21T06:03:14.307229325Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:03:14.307232706Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:03:14.307236503Z [err]      config.load()
+2025-11-21T06:03:14.307243227Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:03:14.307244311Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:03:14.307247060Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:03:14.307251770Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:03:14.307255098Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:03:14.307264027Z [err]      await self._serve(sockets)
+2025-11-21T06:03:14.307378630Z [err]  Traceback (most recent call last):
+2025-11-21T06:03:14.307385392Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:03:14.307389970Z [err]      sys.exit(main())
+2025-11-21T06:03:14.307395231Z [err]               ~~~~^^
+2025-11-21T06:03:14.307401021Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:03:14.307405981Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:03:14.307412907Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:14.307418863Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:03:14.307424504Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:03:14.307431633Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:03:14.307437472Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:03:14.307448612Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:14.307455252Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:03:14.307468373Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:03:14.307482636Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:03:14.307489828Z [err]      run(
+2025-11-21T06:03:14.307499864Z [err]      ~~~^
+2025-11-21T06:03:14.307504295Z [err]          app,
+2025-11-21T06:03:14.307509774Z [err]          ^^^^
+2025-11-21T06:03:14.307515117Z [err]      ...<46 lines>...
+2025-11-21T06:03:14.307519686Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:03:14.307524368Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:14.307588813Z [err]      )
+2025-11-21T06:03:14.307595433Z [err]      ^
+2025-11-21T06:03:14.311362830Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:03:14.311367890Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:03:14.311373408Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:03:14.311378328Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:14.311383262Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:03:14.311395226Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:03:14.311403907Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:03:14.311409646Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:03:14.311414642Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:03:14.311421182Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:03:14.311425984Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:03:14.311430932Z [err]      from app.routers import ndvi
+2025-11-21T06:03:14.311439088Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:03:14.311444161Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:03:14.311448516Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:03:14.311453213Z [err]      import rasterio
+2025-11-21T06:03:14.311458950Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:03:14.311463264Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:03:14.311468404Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory
+2025-11-21T06:03:16.298282436Z [err]  Traceback (most recent call last):
+2025-11-21T06:03:16.298298396Z [err]    File "/app/.venv/bin/uvicorn", line 7, in <module>
+2025-11-21T06:03:16.298308396Z [err]      sys.exit(main())
+2025-11-21T06:03:16.298316764Z [err]               ~~~~^^
+2025-11-21T06:03:16.298325100Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__
+2025-11-21T06:03:16.298351412Z [err]      return self.main(*args, **kwargs)
+2025-11-21T06:03:16.298360577Z [err]             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:16.298374743Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1406, in main
+2025-11-21T06:03:16.298382313Z [err]      rv = self.invoke(ctx)
+2025-11-21T06:03:16.298391618Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke
+2025-11-21T06:03:16.298400884Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2025-11-21T06:03:16.298429863Z [err]             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:16.298445514Z [err]    File "/app/.venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke
+2025-11-21T06:03:16.298452547Z [err]      return callback(*args, **kwargs)
+2025-11-21T06:03:16.298459131Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 423, in main
+2025-11-21T06:03:16.298466548Z [err]      run(
+2025-11-21T06:03:16.298473587Z [err]      ~~~^
+2025-11-21T06:03:16.298479290Z [err]          app,
+2025-11-21T06:03:16.298484111Z [err]          ^^^^
+2025-11-21T06:03:16.298491087Z [err]      ...<46 lines>...
+2025-11-21T06:03:16.298512592Z [err]          h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+2025-11-21T06:03:16.298521009Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:16.298527792Z [err]      )
+2025-11-21T06:03:16.298533360Z [err]      ^
+2025-11-21T06:03:16.302229432Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/main.py", line 593, in run
+2025-11-21T06:03:16.302236191Z [err]      server.run()
+2025-11-21T06:03:16.302243551Z [err]      ~~~~~~~~~~^^
+2025-11-21T06:03:16.302250721Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+2025-11-21T06:03:16.302258998Z [err]      return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+2025-11-21T06:03:16.302268884Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 195, in run
+2025-11-21T06:03:16.302276119Z [err]      return runner.run(main)
+2025-11-21T06:03:16.302287665Z [err]             ~~~~~~~~~~^^^^^^
+2025-11-21T06:03:16.302295840Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/asyncio/runners.py", line 118, in run
+2025-11-21T06:03:16.302303885Z [err]      return self._loop.run_until_complete(task)
+2025-11-21T06:03:16.302311209Z [err]             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-21T06:03:16.302319661Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-11-21T06:03:16.302327644Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+2025-11-21T06:03:16.302335430Z [err]      await self._serve(sockets)
+2025-11-21T06:03:16.302344616Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+2025-11-21T06:03:16.302351873Z [err]      config.load()
+2025-11-21T06:03:16.302359323Z [err]      ~~~~~~~~~~~^^
+2025-11-21T06:03:16.302366607Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+2025-11-21T06:03:16.302373030Z [err]      self.loaded_app = import_from_string(self.app)
+2025-11-21T06:03:16.302380370Z [err]                        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-11-21T06:03:16.302388337Z [err]    File "/app/.venv/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2025-11-21T06:03:16.304366012Z [err]    File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-11-21T06:03:16.304378550Z [err]    File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-11-21T06:03:16.304388331Z [err]    File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-11-21T06:03:16.304402193Z [err]    File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-11-21T06:03:16.304411308Z [err]    File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+2025-11-21T06:03:16.304421309Z [err]    File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-11-21T06:03:16.304431266Z [err]    File "/app/backend/app/main.py", line 5, in <module>
+2025-11-21T06:03:16.304439515Z [err]      from app.routers import ndvi
+2025-11-21T06:03:16.304447244Z [err]    File "/app/backend/app/routers/ndvi.py", line 4, in <module>
+2025-11-21T06:03:16.304456894Z [err]      from app.services.ndvi_service import NDVIService
+2025-11-21T06:03:16.304466730Z [err]    File "/app/backend/app/services/ndvi_service.py", line 1, in <module>
+2025-11-21T06:03:16.304474315Z [err]      import rasterio
+2025-11-21T06:03:16.304485285Z [err]      module = importlib.import_module(module_str)
+2025-11-21T06:03:16.304485818Z [err]    File "/app/.venv/lib/python3.13/site-packages/rasterio/__init__.py", line 25, in <module>
+2025-11-21T06:03:16.304499781Z [err]    File "/mise/installs/python/3.13.9/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-11-21T06:03:16.304502234Z [err]      from rasterio._base import DatasetBase
+2025-11-21T06:03:16.304512700Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-21T06:03:16.304524149Z [err]             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-21T06:03:16.304524608Z [err]  ImportError: libexpat.so.1: cannot open shared object file: No such file or directory

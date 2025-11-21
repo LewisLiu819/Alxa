@@ -1,0 +1,24 @@
+# Nixpacks configuration for Railway deployment
+# This ensures required system libraries are installed for rasterio/GDAL
+
+[phases.setup]
+aptPkgs = [
+    "gdal-bin",
+    "libgdal-dev", 
+    "libexpat1",
+    "libgeos-dev",
+    "libproj-dev",
+    "libsqlite3-0",
+    "libtiff6",
+    "libcurl4",
+    "libxml2",
+    "gcc",
+    "g++"
+]
+
+[phases.install]
+cmds = ["pip install -r backend/requirements.txt"]
+
+[start]
+cmd = "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+
