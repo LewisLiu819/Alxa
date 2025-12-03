@@ -36,18 +36,24 @@ COPY --from=dependencies /usr/local/lib/python3.11/site-packages /usr/local/lib/
 COPY --from=dependencies /usr/local/bin /usr/local/bin
 
 # Create non-root user
-RUN useradd -m -u 1000 appuser && \
-    mkdir -p /app/data /app/logs && \
-    chown -R appuser:appuser /app
+# RUN useradd -m -u 1000 appuser && \
+#     mkdir -p /app/data /app/logs && \
+#     chown -R appuser:appuser /app
+
+RUN mkdir -p /app/data /app/logs 
 
 WORKDIR /app
 
+# # Copy application code
+# COPY --chown=appuser:appuser ./backend/app ./app
+# COPY --chown=appuser:appuser ./scripts ./scripts
+
 # Copy application code
-COPY --chown=appuser:appuser ./backend/app ./app
-COPY --chown=appuser:appuser ./scripts ./scripts
+COPY ./backend/app ./app
+COPY ./scripts ./scripts
 
 # Switch to non-root user
-USER appuser
+# USER appuser
 
 # Expose port
 EXPOSE 8000
