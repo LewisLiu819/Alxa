@@ -25,6 +25,11 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
+        # IMPORTANT: Ignore CORS_ORIGINS from env file/vars because we handle it manually in __init__
+        # This prevents Pydantic from trying to parse it as JSON
+        fields = {
+            "cors_origins": {"env": "CORS_ORIGINS_IGNORED"} 
+        }
 
     def __init__(self, **kwargs):
         # Check if CORS_ORIGINS is in env and handle it BEFORE calling super().__init__
