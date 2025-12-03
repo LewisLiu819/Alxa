@@ -9,11 +9,11 @@ class Settings(BaseSettings):
     secret_key: str = "dev-secret-key-change-in-production"
     log_level: str = "INFO"
     
-    # Data paths - support environment variable with fallback to Google Drive
+    # Data paths - support environment variable with fallback
     raw_data_path: str = os.getenv("NDVI_RAW_DATA_PATH", "/mnt/g/我的云端硬盘/tenggeli_data")
-    data_path: str = "../data"
-    processed_data_path: str = "../data/processed"
-    cache_path: str = "../data/cache"
+    data_path: str = os.getenv("NDVI_DATA_PATH", "../data")
+    processed_data_path: str = os.getenv("NDVI_PROCESSED_DATA_PATH", "../data/processed")
+    cache_path: str = os.getenv("NDVI_CACHE_PATH", "../data/cache")
     
     # Database settings
     database_url: str = "sqlite:///./tenggeli_monitoring.db"
