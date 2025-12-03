@@ -1,5 +1,5 @@
 from pydantic import BaseSettings
-from typing import Optional, List
+from typing import Optional, List, Any
 import os
 
 class Settings(BaseSettings):
@@ -22,38 +22,28 @@ class Settings(BaseSettings):
     # CORS settings - parse from environment variable or use defaults
     cors_origins: List[str] = []
     
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Parse CORS_ORIGINS from environment variable if provided
-        cors_env = os.getenv("CORS_ORIGINS")
-        if cors_env:
-            self.cors_origins = [origin.strip() for origin in cors_env.split(",")]
-        elif not self.cors_origins:
-            # Default CORS origins for development
-            self.cors_origins = ["http://localhost:3000", "http://localhost:5173"]
-    
-    # Region bounds (Tenggeli Desert)
-    region_west: float = 103.0
-    region_south: float = 37.5
-    region_east: float = 105.2
-    region_north: float = 39.0
-    
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
-    
-    def parse_cors_origins(self):
-        """Parse CORS origins after initialization"""
-        cors_env = os.getenv("CORS_ORIGINS")
-        if cors_env:
-            self.cors_origins = [origin.strip() for origin in cors_env.split(",")]
-        elif not self.cors_origins:
-            self.cors_origins = ["http://localhost:3000", "http://localhost:5173"]
 
     def __init__(self, **kwargs):
+        # Check if CORS_ORIGINS is in env and handle it BEFORE calling super().__init__
+        # This bypasses Pydantic's automatic JSON parsing which fails on simple strings like "*"
+        env_cors = os.getenv("CORS_ORIGINS")
+        if env_cors:
+            if env_cors.strip() == "*":
+                kwargs["cors_origins"] = ["*"]
+            elif "," in env_cors:
+                kwargs["cors_origins"] = [origin.strip() for origin in env_cors.split(",")]
+            else:
+                kwargs["cors_origins"] = [env_cors.strip()]
+        
         super().__init__(**kwargs)
-        # Parse CORS origins
-        self.parse_cors_origins()
+        
+        # Fallback if empty
+        if not self.cors_origins:
+             self.cors_origins = ["http://localhost:3000", "http://localhost:5173"]
+
         # Convert relative paths to absolute paths
         if not os.path.isabs(self.data_path):
             self.data_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", self.data_path))
