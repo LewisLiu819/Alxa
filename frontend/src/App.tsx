@@ -23,8 +23,7 @@ const App: React.FC = () => {
         // Use same URL logic as api.ts
         let apiUrl = '/api/v1/ndvi/files';
         if (window.location.hostname.includes('.up.railway.app')) {
-          const backendUrl = window.location.origin.replace('frontend-', 'backend-');
-          apiUrl = `${backendUrl}/api/v1/ndvi/files`;
+          apiUrl = 'https://backend-production-acfe.up.railway.app/api/v1/ndvi/files';
         }
         const response = await fetch(apiUrl);
         const data = await response.json();
