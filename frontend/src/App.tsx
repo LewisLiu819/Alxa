@@ -20,7 +20,13 @@ const App: React.FC = () => {
   useEffect(() => {
     const testDirectAPI = async () => {
       try {
-        const response = await fetch('/api/v1/ndvi/files');
+        // Use same URL logic as api.ts
+        let apiUrl = '/api/v1/ndvi/files';
+        if (window.location.hostname.includes('.up.railway.app')) {
+          const backendUrl = window.location.origin.replace('frontend-', 'backend-');
+          apiUrl = `${backendUrl}/api/v1/ndvi/files`;
+        }
+        const response = await fetch(apiUrl);
         const data = await response.json();
         setApiFiles(data);
       } catch (error) {
