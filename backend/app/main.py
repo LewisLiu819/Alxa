@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
-from app.routers import ndvi
+from app.routers import ndvi, upload
 from app.config.settings import settings
 from app.database import init_db
 import logging
@@ -51,6 +51,7 @@ app.add_middleware(
 )
 
 app.include_router(ndvi.router, prefix="/api/v1", tags=["ndvi"])
+app.include_router(upload.router, prefix="/api/v1/data", tags=["upload"])
 
 def extract_uploaded_archives():
     """Check for and extract any uploaded archive files in the data directory."""
