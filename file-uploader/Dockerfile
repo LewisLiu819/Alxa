@@ -7,6 +7,10 @@ USER root
 # Create directories with proper permissions
 RUN mkdir -p /config /data && chmod 777 /config /data
 
+# Initialize filebrowser database with default admin user
+RUN filebrowser config init --database /config/filebrowser.db && \
+    filebrowser users add admin admin --database /config/filebrowser.db --perm.admin
+
 # Expose port
 EXPOSE 8080
 
