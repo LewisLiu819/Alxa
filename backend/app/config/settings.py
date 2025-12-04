@@ -1,5 +1,5 @@
-from pydantic import BaseSettings
-from typing import Optional, List, Any
+from pydantic import BaseSettings, validator
+from typing import Optional, List
 import os
 
 class Settings(BaseSettings):
@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     
     # Data paths - support environment variable with fallback
-    raw_data_path: str = os.getenv("NDVI_RAW_DATA_PATH", "/mnt/g/我的云端硬盘/tenggeli_data")
+    raw_data_path: str = os.getenv("NDVI_RAW_DATA_PATH", "/mnt/g/tenggeli_data")
     data_path: str = os.getenv("NDVI_DATA_PATH", "../data")
     processed_data_path: str = os.getenv("NDVI_PROCESSED_DATA_PATH", "../data/processed")
     cache_path: str = os.getenv("NDVI_CACHE_PATH", "../data/cache")
@@ -25,35 +25,32 @@ class Settings(BaseSettings):
     region_south: float = 37.0
     region_north: float = 40.0
     
-    # CORS settings - parse from environment variable or use defaults
-    cors_origins: List[str] = []
+    # CORS settings - use string to avoid Pydantic JSON parsing issues
+    # Will be converted to list in get_cors_origins()
+    cors_origins_raw: str = ""
     
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
-        # IMPORTANT: Ignore CORS_ORIGINS from env file/vars because we handle it manually in __init__
-        # This prevents Pydantic from trying to parse it as JSON
+        # Map the environment variable name
         fields = {
-            "cors_origins": {"env": "CORS_ORIGINS_IGNORED"} 
+            "cors_origins_raw": {"env": "CORS_ORIGINS"}
         }
+    
+    @property
+    def cors_origins(self) -> List[str]:
+        """Parse CORS origins from raw string."""
+        raw = self.cors_origins_raw.strip()
+        if not raw:
+            return ["*"]  # Default to allow all in development
+        if raw == "*":
+            return ["*"]
+        if "," in raw:
+            return [origin.strip() for origin in raw.split(",") if origin.strip()]
+        return [raw]
 
     def __init__(self, **kwargs):
-        # Check if CORS_ORIGINS is in env and handle it BEFORE calling super().__init__
-        # This bypasses Pydantic's automatic JSON parsing which fails on simple strings like "*"
-        env_cors = os.getenv("CORS_ORIGINS")
-        if env_cors:
-            if env_cors.strip() == "*":
-                kwargs["cors_origins"] = ["*"]
-            elif "," in env_cors:
-                kwargs["cors_origins"] = [origin.strip() for origin in env_cors.split(",")]
-            else:
-                kwargs["cors_origins"] = [env_cors.strip()]
-        
         super().__init__(**kwargs)
-        
-        # Fallback if empty
-        if not self.cors_origins:
-             self.cors_origins = ["http://localhost:3000", "http://localhost:5173"]
 
         # Convert relative paths to absolute paths
         if not os.path.isabs(self.data_path):
