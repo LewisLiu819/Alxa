@@ -19,6 +19,12 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./tenggeli_monitoring.db"
     redis_url: Optional[str] = None
     
+    # Region bounds (Tenggeli Desert area)
+    region_west: float = 103.0
+    region_east: float = 106.0
+    region_south: float = 37.0
+    region_north: float = 40.0
+    
     # CORS settings - parse from environment variable or use defaults
     cors_origins: List[str] = []
     
