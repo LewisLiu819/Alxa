@@ -16,6 +16,23 @@ UPLOAD_TOKEN = os.getenv("UPLOAD_TOKEN", "temporary-upload-token-change-me")
 def extract_archive(filepath: str, extract_to: str):
     """Extract zip or tar.gz file"""
     try:
+        filename = os.path.basename(filepath)
+        
+        # Check if this is a month archive (format: YYYY_MM.zip)
+        # These should be extracted to processed/ subdirectory
+        is_month_archive = (
+            filename.endswith('.zip') and 
+            len(filename) == 11 and  # "YYYY_MM.zip" = 11 chars
+            '_' in filename
+        )
+        
+        if is_month_archive:
+            # Extract to processed/ directory
+            target_dir = os.path.join(extract_to, 'processed')
+            os.makedirs(target_dir, exist_ok=True)
+            extract_to = target_dir
+            logger.info(f"Month archive detected, extracting to: {target_dir}")
+        
         if filepath.endswith('.zip'):
             with zipfile.ZipFile(filepath, 'r') as zip_ref:
                 zip_ref.extractall(extract_to)
@@ -23,9 +40,9 @@ def extract_archive(filepath: str, extract_to: str):
             with tarfile.open(filepath, 'r:gz') as tar_ref:
                 tar_ref.extractall(extract_to)
         
-        # Rename original file after extraction
-        os.rename(filepath, filepath + '.extracted')
-        logger.info(f"Successfully extracted {filepath}")
+        # Remove the zip file after extraction to save space
+        os.remove(filepath)
+        logger.info(f"Successfully extracted and removed {filepath}")
     except Exception as e:
         logger.error(f"Failed to extract {filepath}: {e}")
 
