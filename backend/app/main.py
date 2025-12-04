@@ -7,6 +7,9 @@ from app.config.settings import settings
 from app.database import init_db
 import logging
 import os
+import zipfile
+import tarfile
+import shutil
 
 # Setup logging
 logging.basicConfig(
@@ -49,11 +52,44 @@ app.add_middleware(
 
 app.include_router(ndvi.router, prefix="/api/v1", tags=["ndvi"])
 
+def extract_uploaded_archives():
+    """Check for and extract any uploaded archive files in the data directory."""
+    data_path = settings.data_path
+    
+    # Look for zip files
+    for filename in os.listdir(data_path) if os.path.exists(data_path) else []:
+        filepath = os.path.join(data_path, filename)
+        
+        if filename.endswith('.zip'):
+            logger.info(f"Found zip archive: {filename}, extracting...")
+            try:
+                with zipfile.ZipFile(filepath, 'r') as zip_ref:
+                    zip_ref.extractall(data_path)
+                # Move to processed after extraction
+                os.rename(filepath, filepath + '.extracted')
+                logger.info(f"Successfully extracted {filename}")
+            except Exception as e:
+                logger.error(f"Failed to extract {filename}: {e}")
+        
+        elif filename.endswith('.tar.gz') or filename.endswith('.tgz'):
+            logger.info(f"Found tar.gz archive: {filename}, extracting...")
+            try:
+                with tarfile.open(filepath, 'r:gz') as tar_ref:
+                    tar_ref.extractall(data_path)
+                os.rename(filepath, filepath + '.extracted')
+                logger.info(f"Successfully extracted {filename}")
+            except Exception as e:
+                logger.error(f"Failed to extract {filename}: {e}")
+
 @app.on_event("startup")
 async def startup_event():
     """Initialize database and data directories on startup."""
     logger.info("Initializing Tenggeli Desert Monitoring API...")
     init_db()
+    
+    # Extract any uploaded archives
+    extract_uploaded_archives()
+    
     logger.info(f"Data path: {settings.data_path}")
     logger.info(f"Processed data path: {settings.processed_data_path}")
     logger.info("API startup complete")
