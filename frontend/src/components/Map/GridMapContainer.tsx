@@ -274,18 +274,40 @@ const GridMapContainer: React.FC<GridMapProps> = ({
   }, [generateGridCells, onGridCellsUpdate]);
 
   // —— 使用后端真实 NDVI 覆盖前端模拟值 ——
-  const [ndviCache, setNdviCache] = useState<Map<string, number | null>>(new Map());
+  // Use useRef instead of useState to avoid triggering re-renders and infinite loops
+  const ndviCacheRef = React.useRef<Map<string, number | null>>(new Map());
+  const [isFetching, setIsFetching] = useState(false);
+  const lastFetchKeyRef = React.useRef<string>('');
 
   useEffect(() => {
-    let isCancelled = false;
+    // Validate selectedDate before parsing
+    if (!selectedDate || selectedDate.trim() === '') {
+      return;
+    }
+    
     const date = new Date(selectedDate);
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
-
-    // Clear cache when date changes to ensure fresh data for new time period
-    setNdviCache(new Map());
+    
+    // Additional validation: check if year/month are valid numbers
+    if (isNaN(year) || isNaN(month) || year < 2000 || month < 1 || month > 12) {
+      return;
+    }
 
     if (!gridCells || gridCells.length === 0) return;
+
+    // Create a unique key for this fetch operation to prevent duplicate requests
+    const fetchKey = `${year}-${month}-${gridCells.length}`;
+    if (fetchKey === lastFetchKeyRef.current) {
+      return; // Already fetched for this date/grid combination
+    }
+
+    // Prevent concurrent fetches
+    if (isFetching) return;
+
+    let isCancelled = false;
+    lastFetchKeyRef.current = fetchKey;
+    setIsFetching(true);
 
     const getCenter = (cell: GridCell): { lat: number; lon: number } => {
       if (cell.polygonPoints && cell.polygonPoints.length > 0) {
@@ -298,103 +320,81 @@ const GridMapContainer: React.FC<GridMapProps> = ({
     };
 
     const keyOf = (y: number, m: number, lat: number, lon: number) => `${y}-${m}-${lat.toFixed(4)}-${lon.toFixed(4)}`;
+    const cache = ndviCacheRef.current;
 
-    const concurrency = 1; // Ultra-conservative to debug API issues
-    const tasks = gridCells.map((cell) => async () => {
-      const { lat, lon } = getCenter(cell);
-      console.log(`Fetching NDVI for cell at (${lat.toFixed(4)}, ${lon.toFixed(4)}) for ${year}-${month}`);
+    // Process cells sequentially with proper delays to avoid overwhelming the browser/server
+    const processCells = async () => {
+      const results: Array<{ id: string; nowVal: number | null; prevVal: number | null }> = [];
       
-      const kNow = keyOf(year, month, lat, lon);
-      let nowVal = ndviCache.get(kNow);
-      
-      if (nowVal === undefined) {
-        try {
-          const resp = await ndviApi.getValue(lat, lon, year, month);
-          nowVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
-          setNdviCache(prev => new Map(prev.set(kNow, nowVal!)));
-          
-          // Small delay to avoid overwhelming the backend
-          await new Promise(resolve => setTimeout(resolve, 25));
-        } catch (error) {
-          console.error(`❌ FAILED to fetch NDVI for cell (${lat.toFixed(4)}, ${lon.toFixed(4)}) at ${year}-${month}:`, error);
-          nowVal = null;
-          setNdviCache(prev => new Map(prev.set(kNow, null)));
-        }
-      }
-
-      // Try to find a previous month for trend calculation
-      let prevVal = null;
-      let attempts = 0;
-      let prevYear = year;
-      let prevMonth = month - 1;
-      
-      // Try up to 3 previous months to find valid data
-      while (prevVal === null && attempts < 3) {
-        if (prevMonth <= 0) { prevMonth = 12; prevYear = year - 1; }
+      for (let i = 0; i < gridCells.length; i++) {
+        if (isCancelled) break;
         
-        const kPrev = keyOf(prevYear, prevMonth, lat, lon);
-        let cachedPrevVal = ndviCache.get(kPrev);
+        const cell = gridCells[i];
+        const { lat, lon } = getCenter(cell);
         
-        if (cachedPrevVal === undefined) {
+        const kNow = keyOf(year, month, lat, lon);
+        let nowVal = cache.get(kNow);
+        
+        if (nowVal === undefined) {
           try {
-            const resp = await ndviApi.getValue(lat, lon, prevYear, prevMonth);
-            cachedPrevVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
-            setNdviCache(prev => new Map(prev.set(kPrev, cachedPrevVal!)));
-            
-            // Small delay to avoid overwhelming the backend
-            await new Promise(resolve => setTimeout(resolve, 25));
+            const resp = await ndviApi.getValue(lat, lon, year, month);
+            nowVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
+            cache.set(kNow, nowVal);
           } catch (error) {
-            console.warn(`Failed to fetch NDVI for cell (${lat.toFixed(4)}, ${lon.toFixed(4)}) at ${prevYear}-${prevMonth}:`, error);
-            cachedPrevVal = null;
-            setNdviCache(prev => new Map(prev.set(kPrev, null)));
+            nowVal = null;
+            cache.set(kNow, null);
+          }
+          // Add delay between requests to avoid overwhelming the server
+          await new Promise(resolve => setTimeout(resolve, 50));
+        }
+
+        // Only fetch previous month if we have current data (skip trend for failed cells)
+        let prevVal: number | null = null;
+        if (nowVal !== null) {
+          let prevYear = year;
+          let prevMonth = month - 1;
+          if (prevMonth <= 0) { prevMonth = 12; prevYear = year - 1; }
+          
+          const kPrev = keyOf(prevYear, prevMonth, lat, lon);
+          prevVal = cache.get(kPrev) ?? null;
+          
+          if (prevVal === undefined) {
+            try {
+              const resp = await ndviApi.getValue(lat, lon, prevYear, prevMonth);
+              prevVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
+              cache.set(kPrev, prevVal);
+            } catch {
+              prevVal = null;
+              cache.set(kPrev, null);
+            }
+            await new Promise(resolve => setTimeout(resolve, 50));
           }
         }
         
-        if (cachedPrevVal !== null) {
-          prevVal = cachedPrevVal;
-          console.log(`Found previous NDVI data: ${prevVal} for ${prevYear}-${prevMonth}`);
-          break;
-        }
-        
-        // Try the month before
-        prevMonth--;
-        attempts++;
+        results.push({ id: cell.id, nowVal, prevVal });
       }
-
-      console.log(`Cell ${cell.id}: nowVal=${nowVal}, prevVal=${prevVal}`);
-      return { id: cell.id, nowVal, prevVal };
-    });
-
-    const runPool = async <T,>(taskFns: Array<() => Promise<T>>, limit: number): Promise<T[]> => {
-      const results: T[] = [];
-      let i = 0;
-      const workers = new Array(Math.min(limit, taskFns.length)).fill(0).map(async () => {
-        while (i < taskFns.length) {
-          const cur = i++;
-          const r = await taskFns[cur]();
-          results[cur] = r;
-        }
-      });
-      await Promise.all(workers);
+      
       return results;
     };
 
+    // Execute the fetch and update grid cells
     (async () => {
       try {
-        const fetched = await runPool(tasks, concurrency);
-        if (isCancelled) return;
+        const fetched = await processCells();
+        if (isCancelled) {
+          setIsFetching(false);
+          return;
+        }
+        
         const byId = new Map<string, { nowVal: number | null; prevVal: number | null }>();
-        fetched.forEach((f) => byId.set((f as any).id, { nowVal: (f as any).nowVal, prevVal: (f as any).prevVal }));
+        fetched.forEach((f) => byId.set(f.id, { nowVal: f.nowVal, prevVal: f.prevVal }));
 
         const updated = gridCells.map((cell) => {
           const f = byId.get(cell.id);
           if (!f || f.nowVal === null) {
-            console.warn(`⚠️  No NDVI data for cell ${cell.id} - using fallback values`);
-            // Keep current initialized value instead of defaulting to 0
-            // This maintains visual consistency for cells outside data coverage
+            // Keep existing values for cells without data
             return { 
               ...cell,
-              // Keep existing values if they're already reasonable
               ndvi: (typeof cell.ndvi === 'number' && cell.ndvi > 0) ? cell.ndvi : 0.05,
               vegetationPercent: (typeof cell.vegetationPercent === 'number' && cell.vegetationPercent > 0) ? cell.vegetationPercent : 5,
               trendDirection: 'stable' as const,
@@ -411,38 +411,24 @@ const GridMapContainer: React.FC<GridMapProps> = ({
           let changeRate = 0;
           
           if (typeof f.prevVal === 'number' && !isNaN(f.prevVal)) {
-            const prevRaw = f.prevVal;
-            const prevNorm = Math.max(0, Math.min(1, prevRaw));
+            const prevNorm = Math.max(0, Math.min(1, f.prevVal));
+            const absoluteChange = (normalized - prevNorm) * 100;
             
-            // Calculate absolute difference (in percentage points)
-            const absoluteChange = (normalized - prevNorm) * 100; // e.g., 0.08 to 0.10 = +2 percentage points
-            
-            // For desert conditions, use absolute thresholds instead of relative percentages
-            // This prevents extreme relative changes from small baseline values
-            if (Math.abs(absoluteChange) >= 0.5) { // At least 0.5 percentage point change
-              changeRate = Math.round(absoluteChange * 10) / 10; // Round to 1 decimal place
-              
-              // Use more reasonable thresholds for desert vegetation
-              if (absoluteChange > 1.0) { // More than 1 percentage point increase
-                trendDirection = 'up';
-              } else if (absoluteChange < -1.0) { // More than 1 percentage point decrease  
-                trendDirection = 'down';
-              } else {
-                trendDirection = 'stable';
-              }
-            } else {
-              // Very small changes are considered stable
+            if (Math.abs(absoluteChange) >= 0.5) {
               changeRate = Math.round(absoluteChange * 10) / 10;
-              trendDirection = 'stable';
+              if (absoluteChange > 1.0) {
+                trendDirection = 'up';
+              } else if (absoluteChange < -1.0) {
+                trendDirection = 'down';
+              }
             }
           }
           
-          console.log(`✅ Cell ${cell.id}: NDVI=${normalized.toFixed(3)}, trend=${trendDirection}, change=${changeRate.toFixed(1)}%`);
           return { ...cell, ndvi: normalized, vegetationPercent, trendDirection, changeRate };
         });
 
-        // 仅当确实有变化时再更新
-        const changed = updated.some((c, idx) => c.ndvi !== gridCells[idx].ndvi || c.vegetationPercent !== gridCells[idx].vegetationPercent);
+        // Only update if there are actual changes
+        const changed = updated.some((c, idx) => c.ndvi !== gridCells[idx].ndvi);
         if (changed) {
           setGridCells(updated);
           if (onGridCellsUpdate) {
@@ -450,13 +436,14 @@ const GridMapContainer: React.FC<GridMapProps> = ({
           }
         }
       } catch (error) {
-        console.error('Critical error in NDVI data fetching:', error);
-        // Keep fallback values - no UI disruption
+        console.error('Error fetching NDVI data:', error);
+      } finally {
+        setIsFetching(false);
       }
     })();
 
     return () => { isCancelled = true; };
-  }, [gridCells, selectedDate, ndviCache]);
+  }, [gridCells, selectedDate]); // Removed ndviCache from dependencies to prevent infinite loops
 
   // Desert-optimized vegetation color mapping for 0-25% vegetation range
   const getNdviHeatmapColor = (
