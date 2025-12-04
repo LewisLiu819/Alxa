@@ -10,6 +10,7 @@ RUN mkdir -p /config /data && chmod 777 /config /data
 # Expose port
 EXPOSE 8080
 
-# Start filebrowser with Railway's PORT
-CMD ["/bin/sh", "-c", "/filebrowser --database /config/filebrowser.db --root /data --address 0.0.0.0 --port ${PORT:-8080}"]
+# Override entrypoint and use shell to expand PORT variable
+ENTRYPOINT []
+CMD ["/bin/sh", "-c", "filebrowser --database /config/filebrowser.db --root /data --address 0.0.0.0 --port ${PORT:-8080}"]
 
