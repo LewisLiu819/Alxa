@@ -6,14 +6,16 @@ import { NDVITimeSeriesResponse, NDVIStatistics, AvailableFiles } from '@/types/
 // 2. If running on Railway (*.up.railway.app), use the hardcoded backend URL
 // 3. Otherwise use relative path for local dev (Vite proxy)
 function getApiBaseUrl(): string {
+  // Production environment (Railway) - use the explicit backend URL
+  // This handles both the internal domain (*.up.railway.app) and custom domains
+  if (import.meta.env.PROD) {
+    return 'https://backend-production-acfe.up.railway.app/api/v1';
+  }
+
+  // Explicit environment variable
   const envBase = (import.meta as any).env.VITE_API_BASE_URL;
   if (envBase) {
     return `${envBase.replace(/\/$/, '')}/api/v1`;
-  }
-  
-  // Railway production environment - use the actual backend URL
-  if (typeof window !== 'undefined' && window.location.hostname.includes('.up.railway.app')) {
-    return 'https://backend-production-acfe.up.railway.app/api/v1';
   }
   
   // Local development - use Vite proxy

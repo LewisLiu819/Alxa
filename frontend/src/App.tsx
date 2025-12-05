@@ -4,6 +4,7 @@ import EnhancedTimeSlider from '@/components/UI/EnhancedTimeSlider';
 import GridStatisticsPanel from '@/components/Analysis/GridStatisticsPanel';
 import GridCellDetailView from '@/components/Analysis/GridCellDetailView';
 import { useAvailableFiles } from '@/hooks/useNDVIData';
+import { ndviApi } from '@/services/api';
 import { GridCell } from '@/types/grid';
 
 const App: React.FC = () => {
@@ -20,13 +21,8 @@ const App: React.FC = () => {
   useEffect(() => {
     const testDirectAPI = async () => {
       try {
-        // Use same URL logic as api.ts
-        let apiUrl = '/api/v1/ndvi/files';
-        if (window.location.hostname.includes('.up.railway.app')) {
-          apiUrl = 'https://backend-production-acfe.up.railway.app/api/v1/ndvi/files';
-        }
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+        // Use the shared API client to ensure consistent URL handling
+        const data = await ndviApi.getAvailableFiles();
         setApiFiles(data);
       } catch (error) {
         console.error('Direct API fallback failed', error);
