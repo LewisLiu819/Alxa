@@ -872,8 +872,7 @@ const GridMapContainer: React.FC<GridMapProps> = ({
       </div>
 
       {/* Statistics Summary Panel */}
-      {/* Moved to Sidebar */}
-      {(false) && (
+      {showStatsSummary && (
         <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-lg border z-20 max-w-sm">
           <div className="text-sm font-semibold text-gray-800 mb-3 flex items-center">
             <span className="w-3 h-3 bg-purple-500 rounded mr-2"></span>
