@@ -133,7 +133,7 @@ const EnhancedTimeSlider: React.FC<TimeSliderProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg border p-4">
+    <div className="h-full w-full p-4">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">

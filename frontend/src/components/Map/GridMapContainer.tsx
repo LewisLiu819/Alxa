@@ -732,7 +732,7 @@ const GridMapContainer: React.FC<GridMapProps> = ({
       <div className="ndvi-layer-mask" style={{ zIndex: 5 }} />
 
       {/* Interactive Layer Controls */}
-      <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-lg border z-20 max-w-xs">
+      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-white/20 z-20 max-w-xs transition-opacity duration-300 hover:opacity-100 opacity-90">
         <div className="text-sm font-semibold text-gray-800 mb-3">Map Controls</div>
         
         {/* View Mode Toggle */}
@@ -872,7 +872,8 @@ const GridMapContainer: React.FC<GridMapProps> = ({
       </div>
 
       {/* Statistics Summary Panel */}
-      {(showStatsSummary || activeSelectedCells.length > 1) && (
+      {/* Moved to Sidebar */}
+      {(false) && (
         <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-lg border z-20 max-w-sm">
           <div className="text-sm font-semibold text-gray-800 mb-3 flex items-center">
             <span className="w-3 h-3 bg-purple-500 rounded mr-2"></span>
@@ -990,7 +991,7 @@ const GridMapContainer: React.FC<GridMapProps> = ({
       )}
 
       {/* Enhanced Legend */}
-      <div className="absolute bottom-4 right-4 bg-white p-3 rounded-lg shadow-lg border z-10 max-w-xs">
+      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-white/20 z-10 max-w-xs transition-opacity duration-300 hover:opacity-100 opacity-90">
         <div className="text-sm font-semibold text-gray-800 mb-2">
           Desert Vegetation Scale
         </div>

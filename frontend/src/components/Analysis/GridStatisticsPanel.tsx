@@ -88,7 +88,7 @@ const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg border h-full overflow-y-auto">
+    <div className="h-full overflow-y-auto">
       {/* Professional Header */}
       <div className="p-4 border-b bg-gradient-to-r from-green-50 to-blue-50">
         <div className="flex items-center gap-2 mb-2">

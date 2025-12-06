@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import GridMapContainer from '@/components/Map/GridMapContainer';
 import EnhancedTimeSlider from '@/components/UI/EnhancedTimeSlider';
 import GridStatisticsPanel from '@/components/Analysis/GridStatisticsPanel';
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [showDetailView, setShowDetailView] = useState<boolean>(false);
   const [gridCells, setGridCells] = useState<GridCell[]>([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   
   const [apiFiles, setApiFiles] = useState<{files?: Array<{year: number; month: number}>; count?: number} | null>(null);
   const { data: availableFiles } = useAvailableFiles();
@@ -104,67 +106,81 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="h-full flex flex-col">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-green-600 to-blue-600 shadow-lg px-6 py-4">
+    <div className="h-screen flex flex-col overflow-hidden bg-gray-100">
+      {/* Header - Compact & Overlay-style compatible */}
+      <header className="relative z-30 bg-gradient-to-r from-green-600 to-blue-600 shadow-md px-4 py-3 flex-shrink-0">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-white">
-              Tenggeli Desert Grid Analysis
+            <h1 className="text-xl font-bold text-white flex items-center gap-2">
+              <span>Tenggeli Desert</span>
+              <span className="text-green-200 font-normal">Monitor</span>
             </h1>
-            <p className="text-sm text-green-100">
-              Grid-based vegetation monitoring and trend analysis system
-            </p>
           </div>
-          <div className="text-right">
-            <div className="text-lg font-semibold text-white">
+          <div className="text-right hidden sm:block">
+            <div className="text-sm font-medium text-white">
               {formatDateForDisplay(selectedDate)}
             </div>
-            <div className="text-xs text-green-100">
-              {(availableFiles?.count || apiFiles?.count) ? `${availableFiles?.count || apiFiles?.count} datasets • 225 grid cells` : 'Loading...'}
+            <div className="text-xs text-green-100 opacity-80">
+              {(availableFiles?.count || apiFiles?.count) ? `${availableFiles?.count || apiFiles?.count} datasets` : 'Loading...'}
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <div className="flex-1 flex gap-4 p-4 bg-gray-50">
-        {/* Map Section */}
-        <div className="flex-1 flex flex-col gap-4 relative z-0">
-          {/* Grid Map */}
-          <div className="flex-1 bg-white rounded-lg shadow-lg overflow-hidden relative">
-            <GridMapContainer
-              selectedDate={selectedDate}
-              ndviData={availableFiles}
-              onCellSelect={handleCellSelect}
-              selectedCell={selectedCell}
-              onGridCellsUpdate={handleGridCellsUpdate}
-            />
-          </div>
-          
-          {/* Time Controls */}
-          <div className="h-auto">
-            <EnhancedTimeSlider
-              selectedDate={selectedDate}
-              onDateChange={setSelectedDate}
-              availableDates={availableDates}
-              isPlaying={isPlaying}
-              onPlayStateChange={setIsPlaying}
-            />
-          </div>
-        </div>
-
-        {/* Statistics Panel */}
-        <div className="w-96 relative z-10">
-          <GridStatisticsPanel
-            selectedCell={selectedCell}
-            gridCells={gridCells}
+      {/* Main Content Area - Relative for absolute positioning of children */}
+      <div className="flex-1 relative overflow-hidden">
+        
+        {/* Map Background - Full Coverage */}
+        <div className="absolute inset-0 z-0">
+          <GridMapContainer
             selectedDate={selectedDate}
+            ndviData={availableFiles}
+            onCellSelect={handleCellSelect}
+            selectedCell={selectedCell}
+            onGridCellsUpdate={handleGridCellsUpdate}
           />
         </div>
+        
+        {/* Floating Time Slider - Bottom Center */}
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center z-20 pointer-events-none px-4 pb-safe">
+          <div className="w-full max-w-3xl pointer-events-auto transform transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/20 overflow-hidden">
+              <EnhancedTimeSlider
+                selectedDate={selectedDate}
+                onDateChange={setSelectedDate}
+                availableDates={availableDates}
+                isPlaying={isPlaying}
+                onPlayStateChange={setIsPlaying}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Collapsible Statistics Panel - Right Side */}
+        <div className={`absolute top-4 bottom-28 md:bottom-4 right-4 z-20 flex flex-row items-start gap-2 pointer-events-none transition-transform duration-500 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-[calc(100%-0px)]'}`}>
+          
+          {/* Toggle Button */}
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="mt-2 p-2 bg-white/90 backdrop-blur hover:bg-white text-gray-600 hover:text-blue-600 rounded-l-lg shadow-lg border-y border-l border-gray-200 pointer-events-auto transition-colors"
+            aria-label={isSidebarOpen ? "Close statistics panel" : "Open statistics panel"}
+          >
+            {isSidebarOpen ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
+          </button>
+
+          {/* Panel Container */}
+          <div className={`w-96 h-full bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col pointer-events-auto transition-opacity duration-300 ${isSidebarOpen ? 'opacity-100' : 'opacity-0'}`}>
+             <GridStatisticsPanel
+               selectedCell={selectedCell}
+               gridCells={gridCells}
+               selectedDate={selectedDate}
+             />
+          </div>
+        </div>
+
       </div>
 
-      {/* Detail View Modal */}
+      {/* Detail View Modal - Z-Index 50 to sit on top of everything */}
       {showDetailView && selectedCell && (
         <GridCellDetailView
           selectedCell={selectedCell}

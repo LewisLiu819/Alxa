@@ -2,11 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 @layer base {
   html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: #213547;
+    background-color: #ffffff;
+    overflow: hidden; /* Prevent body scroll for app-like feel */
   }
   
   #root {
@@ -29,10 +39,30 @@
   }
 }
 
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
 /* Leaflet map styling */
 .leaflet-container {
   height: 100%;
   width: 100%;
+  background: #f8fafc;
 }
 
 .leaflet-control-attribution {
@@ -54,4 +84,26 @@
   /* 更轻的径向渐变遮罩，避免整体偏灰 */
   background: radial-gradient(ellipse at center, rgba(0,0,0,0) 72%, rgba(0,0,0,0.06) 100%);
   mix-blend-mode: multiply;
+}
+
+/* Make controls blend better */
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+.leaflet-bar a {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(4px);
+  color: #475569 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.leaflet-bar a:last-child {
+  border-bottom: none !important;
 }
