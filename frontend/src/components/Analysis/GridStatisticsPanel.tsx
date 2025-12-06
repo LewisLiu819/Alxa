@@ -140,10 +140,12 @@ const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
               <div className="bg-gray-50 p-2 rounded">
                 <span className="text-xs text-gray-500 block">Vegetation</span>
                 <div className="font-bold text-green-600 text-lg">{selectedCell.vegetationPercent}%</div>
+                <div className="text-[10px] text-gray-400">NDVI: {selectedCell.ndvi.toFixed(4)}</div>
               </div>
               <div className="bg-gray-50 p-2 rounded">
-                <span className="text-xs text-gray-500 block">NDVI</span>
-                <div className="font-bold text-blue-600 text-lg">{selectedCell.ndvi.toFixed(3)}</div>
+                <span className="text-xs text-gray-500 block">Location</span>
+                <div className="font-bold text-blue-600 text-sm">{selectedCell.lat.toFixed(3)}°N</div>
+                <div className="text-[10px] text-gray-400">{selectedCell.lon.toFixed(3)}°E</div>
               </div>
             </div>
             

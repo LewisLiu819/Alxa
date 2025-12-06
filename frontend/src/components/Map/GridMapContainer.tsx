@@ -78,7 +78,7 @@ const GridMapContainer: React.FC<GridMapProps> = ({
   const [layerControls, setLayerControls] = useState<LayerControls>({
     viewMode: 'hybrid',
     // 基础填充透明度更低，默认弱化显示
-    gridOpacity: 0.28,
+    gridOpacity: 0.65,
     showGrid: true,
     // 默认显示非常轻的边界线，避免“一整片色块”错觉
     showBoundaries: true,
@@ -96,9 +96,9 @@ const GridMapContainer: React.FC<GridMapProps> = ({
   const devicePixelRatioSafe = typeof window !== 'undefined' && window.devicePixelRatio ? window.devicePixelRatio : 1;
   const hairlineWeight = Math.max(0.5 / devicePixelRatioSafe, 0.25);
 
-  // Fixed 15x15 grid size (zoom no longer affects grid size)
+  // Fixed 25x25 grid size for more detail
   const getGridSize = useCallback((): number => {
-    return 15; // Always return 15x15 grid
+    return 25; 
   }, []);
   
   // Generate terrain-aware irregular grid cells (with safety checks)
@@ -113,6 +113,15 @@ const GridMapContainer: React.FC<GridMapProps> = ({
     
     const latStep = (TENGGELI_BOUNDS.north - TENGGELI_BOUNDS.south) / gridSize;
     const lngStep = (TENGGELI_BOUNDS.east - TENGGELI_BOUNDS.west) / gridSize;
+    
+    // Safe date parsing with fallback
+    let currentMonth = 5; // Default to June (0-indexed = 5)
+    if (selectedDate && selectedDate.trim() !== '') {
+      const parsedDate = new Date(selectedDate);
+      if (!isNaN(parsedDate.getTime())) {
+        currentMonth = parsedDate.getMonth();
+      }
+    }
     
     for (let row = 0; row < gridSize; row++) {
       for (let col = 0; col < gridSize; col++) {
@@ -140,26 +149,26 @@ const GridMapContainer: React.FC<GridMapProps> = ({
           [Math.max(...lats), Math.max(...lngs)]
         );
         
-        // Generate NDVI data (same logic as before)
-        const baseNdvi = 0.1 + (row * 0.02) + (col * 0.01);
-        const seasonalVariation = Math.sin((new Date(selectedDate).getMonth() / 12) * 2 * Math.PI) * 0.05;
-        const seedValue = (row * gridSize + col + new Date(selectedDate).getMonth()) * 0.001;
-        const pseudoRandom = (Math.sin(seedValue) + 1) / 2;
-        const variation = (pseudoRandom * 0.1 - 0.05);
-        const ndvi = Math.max(0, Math.min(1, baseNdvi + seasonalVariation + variation));
+        // Normalized position (0-1) for generating varied initial values
+        const rowNorm = row / (gridSize - 1);
+        const colNorm = col / (gridSize - 1);
         
+        // Generate spatially varied NDVI values within desert range (0-0.25)
+        const distFromCenter = Math.sqrt(Math.pow(rowNorm - 0.5, 2) + Math.pow(colNorm - 0.5, 2));
+        const edgeBoost = distFromCenter * 0.08;
+        const wavePattern = Math.sin(rowNorm * Math.PI * 3) * Math.cos(colNorm * Math.PI * 2.5) * 0.06;
+        const seasonalVariation = Math.sin((currentMonth / 12) * 2 * Math.PI) * 0.03;
+        const noise = Math.sin(row * 7.3 + col * 11.7) * Math.cos(row * 3.1 - col * 5.9) * 0.04;
+        
+        const ndvi = Math.max(0.02, Math.min(0.25, 0.06 + edgeBoost + wavePattern + seasonalVariation + noise));
         const vegetationPercent = Math.round(ndvi * 100);
         
         // Calculate trend
-        const currentMonth = new Date(selectedDate).getMonth();
         let prevMonth = currentMonth - 1;
         if (prevMonth < 0) prevMonth = 11;
         
-        const prevSeasonalVariation = Math.sin((prevMonth / 12) * 2 * Math.PI) * 0.05;
-        const prevSeedValue = (row * gridSize + col + prevMonth) * 0.001;
-        const prevPseudoRandom = (Math.sin(prevSeedValue) + 1) / 2;
-        const prevVariation = (prevPseudoRandom * 0.1 - 0.05);
-        const prevNdvi = Math.max(0, Math.min(1, baseNdvi + prevSeasonalVariation + prevVariation));
+        const prevSeasonalVariation = Math.sin((prevMonth / 12) * 2 * Math.PI) * 0.03;
+        const prevNdvi = Math.max(0.02, Math.min(0.25, 0.06 + edgeBoost + wavePattern + prevSeasonalVariation + noise));
         
         // Use absolute change (percentage points) instead of relative change
         const absoluteChange = (ndvi - prevNdvi) * 100; // percentage points
@@ -204,6 +213,15 @@ const GridMapContainer: React.FC<GridMapProps> = ({
     const latStep = (alignedNorth - alignedSouth) / gridSize;
     const lngStep = (alignedEast - alignedWest) / gridSize;
 
+    // Safe date parsing with fallback
+    let currentMonth = 6; // Default to June
+    if (selectedDate && selectedDate.trim() !== '') {
+      const parsedDate = new Date(selectedDate);
+      if (!isNaN(parsedDate.getTime())) {
+        currentMonth = parsedDate.getMonth() + 1;
+      }
+    }
+
     for (let row = 0; row < gridSize; row++) {
       for (let col = 0; col < gridSize; col++) {
         const south = alignedSouth + (row * latStep);
@@ -217,12 +235,28 @@ const GridMapContainer: React.FC<GridMapProps> = ({
         const centerLat = (south + north) / 2;
         const centerLon = (west + east) / 2;
         
-        // Initialize with reasonable values based on desert location and season
-        // This prevents showing 0% everywhere before real data loads
-        const currentMonth = new Date(selectedDate).getMonth() + 1;
-        const seasonalBase = 0.08 + (Math.sin((currentMonth - 4) / 12 * 2 * Math.PI) * 0.04);  // Peak in July
-        const locationVariation = (Math.sin(centerLat * 0.5) + Math.cos(centerLon * 0.3)) * 0.02;
-        const initialNdvi = Math.max(0.03, Math.min(0.20, seasonalBase + locationVariation));
+        // Normalized position (0-1) for generating varied initial values
+        const rowNorm = row / (gridSize - 1);
+        const colNorm = col / (gridSize - 1);
+        
+        // Generate spatially varied initial NDVI values
+        // Simulate realistic desert patterns: slightly higher vegetation near edges (potential water sources)
+        const distFromCenter = Math.sqrt(Math.pow(rowNorm - 0.5, 2) + Math.pow(colNorm - 0.5, 2));
+        const edgeBoost = distFromCenter * 0.08; // Up to 8% boost near edges
+        
+        // Add wave-like variation (simulates dune patterns)
+        const wavePattern = Math.sin(rowNorm * Math.PI * 3) * Math.cos(colNorm * Math.PI * 2.5) * 0.06;
+        
+        // Seasonal base
+        const seasonalBase = 0.06 + (Math.sin((currentMonth - 4) / 12 * 2 * Math.PI) * 0.03);
+        
+        // Random-like variation based on position (deterministic pseudo-random)
+        const noise = Math.sin(row * 7.3 + col * 11.7) * Math.cos(row * 3.1 - col * 5.9) * 0.04;
+        
+        // Combine all factors
+        const initialNdvi = Math.max(0.02, Math.min(0.25, 
+          seasonalBase + edgeBoost + wavePattern + noise
+        ));
         
         const ndvi = initialNdvi;
         const vegetationPercent = Math.round(initialNdvi * 100);
@@ -322,56 +356,63 @@ const GridMapContainer: React.FC<GridMapProps> = ({
     const keyOf = (y: number, m: number, lat: number, lon: number) => `${y}-${m}-${lat.toFixed(4)}-${lon.toFixed(4)}`;
     const cache = ndviCacheRef.current;
 
-    // Process cells sequentially with proper delays to avoid overwhelming the browser/server
+    // Process cells concurrently in batches for better performance
     const processCells = async () => {
       const results: Array<{ id: string; nowVal: number | null; prevVal: number | null }> = [];
+      const BATCH_SIZE = 24; // 625 cells / 24 ≈ 26 batches
       
-      for (let i = 0; i < gridCells.length; i++) {
+      for (let i = 0; i < gridCells.length; i += BATCH_SIZE) {
         if (isCancelled) break;
         
-        const cell = gridCells[i];
-        const { lat, lon } = getCenter(cell);
-        
-        const kNow = keyOf(year, month, lat, lon);
-        let nowVal = cache.get(kNow);
-        
-        if (nowVal === undefined) {
-          try {
-            const resp = await ndviApi.getValue(lat, lon, year, month);
-            nowVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
-            cache.set(kNow, nowVal);
-          } catch (error) {
-            nowVal = null;
-            cache.set(kNow, null);
-          }
-          // Add delay between requests to avoid overwhelming the server
-          await new Promise(resolve => setTimeout(resolve, 50));
-        }
-
-        // Only fetch previous month if we have current data (skip trend for failed cells)
-        let prevVal: number | null = null;
-        if (nowVal !== null) {
-          let prevYear = year;
-          let prevMonth = month - 1;
-          if (prevMonth <= 0) { prevMonth = 12; prevYear = year - 1; }
+        const batch = gridCells.slice(i, i + BATCH_SIZE);
+        const batchPromises = batch.map(async (cell) => {
+          const { lat, lon } = getCenter(cell);
           
-          const kPrev = keyOf(prevYear, prevMonth, lat, lon);
-          prevVal = cache.get(kPrev) ?? null;
+          // Fetch Current Value
+          const kNow = keyOf(year, month, lat, lon);
+          let nowVal = cache.get(kNow);
           
-          if (prevVal === undefined) {
+          if (nowVal === undefined) {
             try {
-              const resp = await ndviApi.getValue(lat, lon, prevYear, prevMonth);
-              prevVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
-              cache.set(kPrev, prevVal);
-            } catch {
-              prevVal = null;
-              cache.set(kPrev, null);
+              const resp = await ndviApi.getValue(lat, lon, year, month);
+              nowVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
+              cache.set(kNow, nowVal);
+            } catch (error) {
+              nowVal = null;
+              cache.set(kNow, null);
             }
-            await new Promise(resolve => setTimeout(resolve, 50));
           }
-        }
+
+          // Fetch Previous Value (only if current exists)
+          let prevVal: number | null = null;
+          if (nowVal !== null) {
+            let prevYear = year;
+            let prevMonth = month - 1;
+            if (prevMonth <= 0) { prevMonth = 12; prevYear = year - 1; }
+            
+            const kPrev = keyOf(prevYear, prevMonth, lat, lon);
+            prevVal = cache.get(kPrev) ?? null;
+            
+            if (prevVal === undefined) {
+              try {
+                const resp = await ndviApi.getValue(lat, lon, prevYear, prevMonth);
+                prevVal = (resp && typeof resp.ndvi_value === 'number') ? resp.ndvi_value : null;
+                cache.set(kPrev, prevVal);
+              } catch {
+                prevVal = null;
+                cache.set(kPrev, null);
+              }
+            }
+          }
+          
+          return { id: cell.id, nowVal, prevVal };
+        });
+
+        const batchResults = await Promise.all(batchPromises);
+        results.push(...batchResults);
         
-        results.push({ id: cell.id, nowVal, prevVal });
+        // Tiny delay to yield to main thread
+        await new Promise(resolve => setTimeout(resolve, 5));
       }
       
       return results;
@@ -388,6 +429,17 @@ const GridMapContainer: React.FC<GridMapProps> = ({
         
         const byId = new Map<string, { nowVal: number | null; prevVal: number | null }>();
         fetched.forEach((f) => byId.set(f.id, { nowVal: f.nowVal, prevVal: f.prevVal }));
+
+        // Debug: Log fetched values to verify variation
+        const validValues = fetched.filter(f => f.nowVal !== null).map(f => f.nowVal as number);
+        if (validValues.length > 0) {
+          const minVal = Math.min(...validValues);
+          const maxVal = Math.max(...validValues);
+          const avgVal = validValues.reduce((a, b) => a + b, 0) / validValues.length;
+          console.log(`[NDVI Debug] Fetched ${validValues.length}/${fetched.length} cells. Range: ${minVal.toFixed(3)} to ${maxVal.toFixed(3)}, Avg: ${avgVal.toFixed(3)}`);
+        } else {
+          console.warn('[NDVI Debug] No valid NDVI values fetched from API');
+        }
 
         const updated = gridCells.map((cell) => {
           const f = byId.get(cell.id);
@@ -445,72 +497,35 @@ const GridMapContainer: React.FC<GridMapProps> = ({
     return () => { isCancelled = true; };
   }, [gridCells, selectedDate]); // Removed ndviCache from dependencies to prevent infinite loops
 
-  // Desert-optimized vegetation color mapping for 0-25% vegetation range
+  // Desert-optimized vegetation color mapping with high contrast for low NDVI values
   const getNdviHeatmapColor = (
     vegetationValue: number
   ): string => {
-    // Safety checks for input values
+    // Safety checks
     if (typeof vegetationValue !== 'number' || isNaN(vegetationValue)) {
-      console.warn('Invalid vegetation value:', vegetationValue);
       vegetationValue = 0;
     }
 
-    // Normalize to 0-1 first so callers can supply either a ratio or percentage
-    const normalized = Math.max(
-      0,
-      Math.min(1, vegetationValue > 1 ? vegetationValue / 100 : vegetationValue)
-    );
-    const vegetationPercent = normalized * 100;
+    // Normalize: handle input as 0-100 or 0-1
+    const ndvi = vegetationValue > 1 ? vegetationValue / 100 : vegetationValue;
     
-    let r: number, g: number, b: number;
+    // Focus the color scale on the critical desert range (0.0 to 0.25)
+    // Any NDVI above 0.25 is considered "lush" for this context
+    const maxDomain = 0.25;
+    const t = Math.min(1, Math.max(0, ndvi / maxDomain));
 
-    if (vegetationPercent <= 2) {
-      // Bare sand/rock - Light tan/beige
-      r = 245; g = 222; b = 179; // #F5DEB3 (wheat)
-    } else if (vegetationPercent <= 5) {
-      // Very sparse - Sand to light brown transition
-      const t = (vegetationPercent - 2) / 3; // 0-1
-      r = 245 - t * 35;  // 245-210
-      g = 222 - t * 42;  // 222-180  
-      b = 179 - t * 69;  // 179-110
-    } else if (vegetationPercent <= 8) {
-      // Sparse - Brown to reddish-brown
-      const t = (vegetationPercent - 5) / 3; // 0-1
-      r = 210 - t * 20;  // 210-190
-      g = 180 - t * 60;  // 180-120
-      b = 110 - t * 40;  // 110-70
-    } else if (vegetationPercent <= 12) {
-      // Low-moderate - Reddish-brown to orange-brown
-      const t = (vegetationPercent - 8) / 4; // 0-1
-      r = 190 + t * 29;  // 190-219
-      g = 120 + t * 45;  // 120-165
-      b = 70 + t * 20;   // 70-90
-    } else if (vegetationPercent <= 17) {
-      // Moderate - Orange-brown to yellow-brown
-      const t = (vegetationPercent - 12) / 5; // 0-1
-      r = 219 + t * 15;  // 219-234
-      g = 165 + t * 44;  // 165-209
-      b = 90 + t * 25;   // 90-115
-    } else if (vegetationPercent <= 22) {
-      // Good (for desert) - Yellow-green transition
-      const t = (vegetationPercent - 17) / 5; // 0-1
-      r = 234 - t * 65;  // 234-169
-      g = 209 + t * 20;  // 209-229
-      b = 115 - t * 35;  // 115-80
-    } else {
-      // Excellent (for desert) - Light green (25%+)
-      const t = Math.min(1, (vegetationPercent - 22) / 8); // 0-1, capped
-      r = 169 - t * 44;  // 169-125
-      g = 229 + t * 15;  // 229-244
-      b = 80 + t * 45;   // 80-125
-    }
+    // Interpolate HSL for smoother and more distinct gradients
+    // Hue: 30 (Sand) -> 120 (Green)
+    const hue = 30 + (t * 90);
+    
+    // Saturation: 25% (Dusty) -> 85% (Vibrant)
+    const saturation = 25 + (t * 60);
+    
+    // Lightness: 92% (Bright sand) -> 35% (Dark vegetation)
+    // Darker colors are easier to distinguish against the map
+    const lightness = 92 - (t * 57);
 
-    // Ensure RGB values are within valid range
-    r = Math.max(0, Math.min(255, Math.round(r)));
-    g = Math.max(0, Math.min(255, Math.round(g)));
-    b = Math.max(0, Math.min(255, Math.round(b)));
-
-    return `rgb(${r}, ${g}, ${b})`;
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
 
   // Calculate statistics for selected cells
@@ -988,45 +1003,60 @@ const GridMapContainer: React.FC<GridMapProps> = ({
       )}
 
       {/* Enhanced Legend - Compact */}
-      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-lg shadow-lg border border-white/20 z-10 max-w-[200px] transition-opacity duration-300 hover:opacity-100 opacity-90">
-        <div className="text-xs font-semibold text-gray-800 mb-1.5">
+      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-white/20 z-10 w-[180px] transition-opacity duration-300 hover:opacity-100 opacity-90">
+        <div className="text-xs font-semibold text-gray-800 mb-2 flex justify-between items-center">
           Vegetation Scale
+          <span className="text-[9px] text-gray-400 font-normal">NDVI</span>
         </div>
         
         {/* Desert vegetation heat map gradient */}
-        <div className="mb-2">
-          <div className="flex items-center gap-1">
-              <div className="flex flex-col gap-0.5">
-                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.25) }}></div>
-                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.20) }}></div>
-                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.15) }}></div>
-                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.10) }}></div>
-                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.05) }}></div>
-                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.02) }}></div>
-              </div>
-            <div className="flex flex-col gap-0.5 text-[9px] text-gray-600 ml-0.5">
-              <div className="h-1.5 flex items-center">25%</div>
-              <div className="h-1.5 flex items-center">20%</div>
-              <div className="h-1.5 flex items-center">15%</div>
-              <div className="h-1.5 flex items-center">10%</div>
-              <div className="h-1.5 flex items-center">5%</div>
-              <div className="h-1.5 flex items-center">2%</div>
+        <div className="mb-3">
+          {/* Gradient Bar */}
+          <div className="h-2.5 w-full rounded-full mb-1.5 shadow-inner border border-gray-100"
+               style={{ background: `linear-gradient(to right, 
+                 hsl(30, 25%, 92%) 0%, 
+                 hsl(52, 40%, 78%) 25%, 
+                 hsl(75, 55%, 63%) 50%, 
+                 hsl(97, 70%, 49%) 75%, 
+                 hsl(120, 85%, 35%) 100%)` 
+               }}>
+          </div>
+          
+          {/* Ticks & Labels */}
+          <div className="flex justify-between text-[9px] text-gray-600 font-medium px-0.5">
+            <div className="flex flex-col items-center">
+              <div className="h-1 w-px bg-gray-300 mb-0.5"></div>
+              <span>0%</span>
             </div>
-            <div className="flex flex-col gap-0.5 text-[9px] text-gray-700 ml-1">
-              <div className="h-1.5 flex items-center">Dense</div>
-              <div className="h-1.5 flex items-center">Good</div>
-              <div className="h-1.5 flex items-center">Moderate</div>
-              <div className="h-1.5 flex items-center">Sparse</div>
-              <div className="h-1.5 flex items-center">Very Sparse</div>
-              <div className="h-1.5 flex items-center">Bare</div>
+            <div className="flex flex-col items-center">
+              <div className="h-1 w-px bg-gray-300 mb-0.5"></div>
+              <span>6%</span>
             </div>
+            <div className="flex flex-col items-center">
+              <div className="h-1 w-px bg-gray-300 mb-0.5"></div>
+              <span>12%</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-1 w-px bg-gray-300 mb-0.5"></div>
+              <span>18%</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-1 w-px bg-gray-300 mb-0.5"></div>
+              <span>25%+</span>
+            </div>
+          </div>
+          
+          {/* Context Labels */}
+          <div className="flex justify-between text-[9px] text-gray-400 mt-1 px-1">
+            <span>Bare Sand</span>
+            <span>Sparse</span>
+            <span>Healthy</span>
           </div>
         </div>
         
-        <div className="text-[9px] text-gray-500 border-t pt-1.5">
-          <div className="mb-0.5">
-            {layerControls.gridMode === 'terrain-aware' ? 'Terrain-Aware Grid' : 'Regular Grid'}
-          </div>
+        <div className="text-[9px] text-gray-400 border-t border-gray-100 pt-2 flex justify-between">
+          <span>Mode: {layerControls.gridMode === 'terrain-aware' ? 'Terrain' : 'Regular'}</span>
+          <span>Grid: {getGridSize()}×{getGridSize()}</span>
         </div>
       </div>
     </div>
