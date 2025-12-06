@@ -731,19 +731,18 @@ const GridMapContainer: React.FC<GridMapProps> = ({
       {/* 轻微径向遮罩，软化栅格边缘，与底图更好融合 */}
       <div className="ndvi-layer-mask" style={{ zIndex: 5 }} />
 
-      {/* Interactive Layer Controls */}
-      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-white/20 z-20 max-w-xs transition-opacity duration-300 hover:opacity-100 opacity-90">
-        <div className="text-sm font-semibold text-gray-800 mb-3">Map Controls</div>
+      {/* Interactive Layer Controls - Compact */}
+      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-white/20 z-20 max-w-[200px] transition-opacity duration-300 hover:opacity-100 opacity-90">
+        <div className="text-xs font-semibold text-gray-800 mb-2">Map Controls</div>
         
-        {/* View Mode Toggle */}
-        <div className="mb-3">
-          <label className="text-xs font-medium text-gray-700 mb-1 block">View Mode</label>
+        {/* View Mode Toggle - Compact */}
+        <div className="mb-2">
           <div className="flex gap-1">
             {(['satellite', 'ndvi', 'hybrid'] as ViewMode[]).map(mode => (
               <button
                 key={mode}
                 onClick={() => setLayerControls(prev => ({ ...prev, viewMode: mode }))}
-                className={`px-2 py-1 text-xs rounded ${
+                className={`px-1.5 py-0.5 text-[10px] rounded ${
                   layerControls.viewMode === mode
                     ? 'bg-blue-500 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -755,15 +754,14 @@ const GridMapContainer: React.FC<GridMapProps> = ({
           </div>
         </div>
 
-        {/* Grid Mode Toggle */}
-        <div className="mb-3">
-          <label className="text-xs font-medium text-gray-700 mb-1 block">Grid Type</label>
+        {/* Grid Mode Toggle - Compact */}
+        <div className="mb-2">
           <div className="flex gap-1">
             {(['regular', 'terrain-aware'] as GridMode[]).map(mode => (
               <button
                 key={mode}
                 onClick={() => setLayerControls(prev => ({ ...prev, gridMode: mode }))}
-                className={`px-2 py-1 text-xs rounded ${
+                className={`px-1.5 py-0.5 text-[10px] rounded flex-1 ${
                   layerControls.gridMode === mode
                     ? 'bg-green-500 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -775,9 +773,9 @@ const GridMapContainer: React.FC<GridMapProps> = ({
           </div>
         </div>
 
-        {/* Grid Opacity Slider */}
-        <div className="mb-3">
-          <label className="text-xs font-medium text-gray-700 mb-1 block">
+        {/* Grid Opacity Slider - Compact */}
+        <div className="mb-2">
+          <label className="text-[10px] font-medium text-gray-700 mb-0.5 block">
             Grid Opacity: {Math.round(layerControls.gridOpacity * 100)}%
           </label>
           <input
@@ -790,28 +788,28 @@ const GridMapContainer: React.FC<GridMapProps> = ({
               ...prev, 
               gridOpacity: parseFloat(e.target.value) 
             }))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
         </div>
 
-        {/* Multi-Selection Controls */}
-        <div className="mb-3 pb-3 border-b">
-          <div className="flex items-center mb-2">
+        {/* Multi-Selection Controls - Compact */}
+        <div className="mb-2 pb-2 border-b">
+          <div className="flex items-center mb-1">
             <input
               type="checkbox"
               id="multiSelect"
               checked={multiSelectMode}
               onChange={(e) => setMultiSelectMode(e.target.checked)}
-              className="mr-2"
+              className="mr-1.5 h-3 w-3"
             />
-            <label htmlFor="multiSelect" className="text-xs font-medium text-gray-700">
+            <label htmlFor="multiSelect" className="text-[10px] font-medium text-gray-700">
               Multi-Selection Mode
             </label>
           </div>
           
           {activeSelectedCells.length > 0 && (
-            <div className="text-xs text-purple-600 mb-2">
-              {activeSelectedCells.length} cell{activeSelectedCells.length > 1 ? 's' : ''} selected
+            <div className="text-[10px] text-purple-600 mb-1">
+              {activeSelectedCells.length} selected
             </div>
           )}
           
@@ -824,15 +822,15 @@ const GridMapContainer: React.FC<GridMapProps> = ({
                   setInternalSelectedCells([]);
                 }
               }}
-              className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200"
+              className="text-[10px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded hover:bg-red-200 w-full"
             >
               Clear Selection
             </button>
           )}
         </div>
 
-        {/* Toggle Options */}
-        <div className="space-y-2">
+        {/* Toggle Options - Compact */}
+        <div className="space-y-1">
           <div className="flex items-center">
             <input
               type="checkbox"
@@ -842,9 +840,9 @@ const GridMapContainer: React.FC<GridMapProps> = ({
                 ...prev, 
                 showGrid: e.target.checked 
               }))}
-              className="mr-2"
+              className="mr-1.5 h-3 w-3"
             />
-            <label htmlFor="showGrid" className="text-xs text-gray-700">Show Grid</label>
+            <label htmlFor="showGrid" className="text-[10px] text-gray-700">Show Grid</label>
           </div>
           
           <div className="flex items-center">
@@ -856,17 +854,17 @@ const GridMapContainer: React.FC<GridMapProps> = ({
                 ...prev, 
                 showBoundaries: e.target.checked 
               }))}
-              className="mr-2"
+              className="mr-1.5 h-3 w-3"
             />
-            <label htmlFor="showBoundaries" className="text-xs text-gray-700">Show Boundaries</label>
+            <label htmlFor="showBoundaries" className="text-[10px] text-gray-700">Show Boundaries</label>
           </div>
         </div>
 
-        {/* Zoom Info */}
-        <div className="mt-3 pt-2 border-t text-xs text-gray-500">
-          Zoom: {currentZoom} | Grid: {getGridSize()}×{getGridSize()} (Fixed)
-          <div className="text-xs text-gray-400 mt-1">
-            {!multiSelectMode && "Ctrl+Click for multi-selection"}
+        {/* Zoom Info - Compact */}
+        <div className="mt-2 pt-1 border-t text-[10px] text-gray-500 leading-tight">
+          Zoom: {currentZoom} | Grid: {getGridSize()}×{getGridSize()}
+          <div className="text-[9px] text-gray-400 mt-0.5">
+            {!multiSelectMode && "Ctrl+Click to select multiple"}
           </div>
         </div>
       </div>
@@ -989,54 +987,45 @@ const GridMapContainer: React.FC<GridMapProps> = ({
         </div>
       )}
 
-      {/* Enhanced Legend */}
-      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-white/20 z-10 max-w-xs transition-opacity duration-300 hover:opacity-100 opacity-90">
-        <div className="text-sm font-semibold text-gray-800 mb-2">
-          Desert Vegetation Scale
+      {/* Enhanced Legend - Compact */}
+      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-lg shadow-lg border border-white/20 z-10 max-w-[200px] transition-opacity duration-300 hover:opacity-100 opacity-90">
+        <div className="text-xs font-semibold text-gray-800 mb-1.5">
+          Vegetation Scale
         </div>
-        <div className="text-xs text-gray-600 mb-3">Optimized for arid conditions (0-25%)</div>
         
         {/* Desert vegetation heat map gradient */}
-        <div className="mb-3">
+        <div className="mb-2">
           <div className="flex items-center gap-1">
-              <div className="flex flex-col gap-1">
-                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.25) }}></div>
-                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.20) }}></div>
-                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.15) }}></div>
-                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.10) }}></div>
-                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.05) }}></div>
-                <div className="w-4 h-2" style={{ backgroundColor: getNdviHeatmapColor(0.02) }}></div>
+              <div className="flex flex-col gap-0.5">
+                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.25) }}></div>
+                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.20) }}></div>
+                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.15) }}></div>
+                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.10) }}></div>
+                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.05) }}></div>
+                <div className="w-3 h-1.5" style={{ backgroundColor: getNdviHeatmapColor(0.02) }}></div>
               </div>
-            <div className="flex flex-col gap-1 text-xs text-gray-600 ml-1">
-              <div className="h-2 flex items-center">25%</div>
-              <div className="h-2 flex items-center">20%</div>
-              <div className="h-2 flex items-center">15%</div>
-              <div className="h-2 flex items-center">10%</div>
-              <div className="h-2 flex items-center">5%</div>
-              <div className="h-2 flex items-center">2%</div>
+            <div className="flex flex-col gap-0.5 text-[9px] text-gray-600 ml-0.5">
+              <div className="h-1.5 flex items-center">25%</div>
+              <div className="h-1.5 flex items-center">20%</div>
+              <div className="h-1.5 flex items-center">15%</div>
+              <div className="h-1.5 flex items-center">10%</div>
+              <div className="h-1.5 flex items-center">5%</div>
+              <div className="h-1.5 flex items-center">2%</div>
             </div>
-            <div className="flex flex-col gap-1 text-xs text-gray-700 ml-2">
-              <div className="h-2 flex items-center">Dense (Desert)</div>
-              <div className="h-2 flex items-center">Good</div>
-              <div className="h-2 flex items-center">Moderate</div>
-              <div className="h-2 flex items-center">Sparse</div>
-              <div className="h-2 flex items-center">Very Sparse</div>
-              <div className="h-2 flex items-center">Bare Sand</div>
+            <div className="flex flex-col gap-0.5 text-[9px] text-gray-700 ml-1">
+              <div className="h-1.5 flex items-center">Dense</div>
+              <div className="h-1.5 flex items-center">Good</div>
+              <div className="h-1.5 flex items-center">Moderate</div>
+              <div className="h-1.5 flex items-center">Sparse</div>
+              <div className="h-1.5 flex items-center">Very Sparse</div>
+              <div className="h-1.5 flex items-center">Bare</div>
             </div>
           </div>
         </div>
         
-        <div className="text-xs text-gray-500 border-t pt-2">
-          <div className="mb-1">
-            Grid: {layerControls.gridMode === 'terrain-aware' ? 'Terrain-Aware' : 'Regular'}
-          </div>
-          <div className="mb-1">
-            Resolution: {getGridSize()}×{getGridSize()} cells (Fixed)
-          </div>
-          <div>
-            {layerControls.viewMode === 'satellite' && 'Satellite base with NDVI overlay'}
-            {layerControls.viewMode === 'ndvi' && 'NDVI heatmap with topographic base'}
-            {layerControls.viewMode === 'hybrid' && 'Combined satellite and topographic view'}
+        <div className="text-[9px] text-gray-500 border-t pt-1.5">
+          <div className="mb-0.5">
+            {layerControls.gridMode === 'terrain-aware' ? 'Terrain-Aware Grid' : 'Regular Grid'}
           </div>
         </div>
       </div>

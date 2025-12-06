@@ -142,8 +142,8 @@ const App: React.FC = () => {
         </div>
         
         {/* Floating Time Slider - Bottom Center */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center z-20 pointer-events-none px-4 pb-safe">
-          <div className="w-full max-w-3xl pointer-events-auto transform transition-all duration-300 hover:-translate-y-1">
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center z-20 pointer-events-none px-4 pb-safe">
+          <div className="w-full max-w-xl pointer-events-auto transform transition-all duration-300 hover:-translate-y-1">
             <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/20 overflow-hidden">
               <EnhancedTimeSlider
                 selectedDate={selectedDate}
@@ -157,19 +157,19 @@ const App: React.FC = () => {
         </div>
 
         {/* Collapsible Statistics Panel - Right Side */}
-        <div className={`absolute top-4 bottom-28 md:bottom-4 right-4 z-20 flex flex-row items-start gap-2 pointer-events-none transition-transform duration-500 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-[calc(100%-0px)]'}`}>
+        <div className={`absolute top-16 bottom-20 right-4 z-20 flex flex-row items-start gap-2 pointer-events-none transition-transform duration-500 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-[calc(100%-0px)]'}`}>
           
           {/* Toggle Button */}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="mt-2 p-2 bg-white/90 backdrop-blur hover:bg-white text-gray-600 hover:text-blue-600 rounded-l-lg shadow-lg border-y border-l border-gray-200 pointer-events-auto transition-colors"
+            className="mt-2 p-1.5 bg-white/90 backdrop-blur hover:bg-white text-gray-600 hover:text-blue-600 rounded-l-lg shadow-lg border-y border-l border-gray-200 pointer-events-auto transition-colors"
             aria-label={isSidebarOpen ? "Close statistics panel" : "Open statistics panel"}
           >
-            {isSidebarOpen ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
+            {isSidebarOpen ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
           </button>
 
           {/* Panel Container */}
-          <div className={`w-96 h-full bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col pointer-events-auto transition-opacity duration-300 ${isSidebarOpen ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`w-72 h-auto max-h-full bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col pointer-events-auto transition-opacity duration-300 ${isSidebarOpen ? 'opacity-100' : 'opacity-0'}`}>
              <GridStatisticsPanel
                selectedCell={selectedCell}
                gridCells={gridCells}
