@@ -97,27 +97,10 @@ const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
     });
   };
 
-  const getTrendIcon = (direction: 'up' | 'down' | 'stable') => {
-    switch (direction) {
-      case 'up':
-        return <TrendingUp className="w-4 h-4 text-green-600" />;
-      case 'down':
-        return <TrendingDown className="w-4 h-4 text-red-600" />;
-      default:
-        return <Minus className="w-4 h-4 text-gray-600" />;
-    }
-  };
-
   const currentYear = selectedDate ? new Date(selectedDate).getFullYear() : 2024;
 
   // Convert NDVI to vegetation percent for display
   const ndviToPercent = (ndvi: number) => Math.round(Math.max(0, ndvi) * 100);
-
-  // Calculate healthy threshold based on desert conditions (NDVI > 0.15 is considered healthy for desert)
-  const healthyThreshold = 0.15;
-  const healthyPercent = globalStats 
-    ? (globalStats.mean >= healthyThreshold ? 100 : Math.round((globalStats.mean / healthyThreshold) * 100))
-    : 0;
 
   return (
     <div className="h-full overflow-y-auto custom-scrollbar">
