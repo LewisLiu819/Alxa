@@ -55,6 +55,22 @@ export const ndviApi = {
     return response.data;
   },
 
+  // Get statistics for a date string (YYYY-MM-DD format)
+  getStatisticsForDate: async (dateString: string): Promise<NDVIStatistics | null> => {
+    try {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      if (isNaN(year) || isNaN(month)) return null;
+      const response = await api.get('/ndvi/statistics', {
+        params: { year, month },
+      });
+      return response.data;
+    } catch {
+      return null;
+    }
+  },
+
   getValue: async (
     lat: number,
     lon: number,

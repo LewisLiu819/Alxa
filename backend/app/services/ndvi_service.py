@@ -166,11 +166,35 @@ class NDVIService:
         )
     
     def get_map_statistics(self, year: int, month: int) -> Dict[str, Any]:
-        """Get statistics for a specific month's NDVI data using sampling for performance.
-
-        Supports both float NDVI [-1,1] rasters and uint8 normalized rasters.
+        """Get statistics for a specific month's NDVI data.
+        
+        First tries to load pre-computed statistics from metadata.json.
+        Falls back to sampling the raster if metadata is not available.
         """
-        file_path = self.processed_data_path / f"{year}_{month:02d}" / "processed.tif"
+        dir_path = self.processed_data_path / f"{year}_{month:02d}"
+        metadata_path = dir_path / "metadata.json"
+        
+        # Try to load pre-computed metadata first
+        if metadata_path.exists():
+            try:
+                import json
+                with open(metadata_path, 'r') as f:
+                    metadata = json.load(f)
+                # Return the pre-computed statistics
+                return {
+                    "min": metadata.get("min"),
+                    "max": metadata.get("max"),
+                    "mean": metadata.get("mean"),
+                    "std": metadata.get("std"),
+                    "count": metadata.get("count"),
+                    "bounds": metadata.get("bounds"),
+                    "from_metadata": True
+                }
+            except Exception as e:
+                print(f"Error reading metadata.json: {e}, falling back to sampling")
+        
+        # Fallback: sample the raster file
+        file_path = dir_path / "processed.tif"
         
         if not file_path.exists():
             return {}

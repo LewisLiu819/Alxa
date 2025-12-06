@@ -1,6 +1,8 @@
-import React from 'react';
-import { TrendingUp, TrendingDown, Minus, Leaf, BarChart3, Calendar } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { TrendingUp, TrendingDown, Minus, Leaf, BarChart3, Calendar, Database } from 'lucide-react';
 import { GridCell, GridStatsSummary } from '@/types/grid';
+import { ndviApi } from '@/services/api';
+import SparklineChart from './SparklineChart';
 
 
 interface GridStatisticsPanelProps {
@@ -9,13 +11,47 @@ interface GridStatisticsPanelProps {
   selectedDate: string;
 }
 
+interface GlobalStats {
+  min: number;
+  max: number;
+  mean: number;
+  std: number;
+  count: number;
+  from_metadata?: boolean;
+}
+
 const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
   selectedCell,
   gridCells,
   selectedDate
 }) => {
-  // Calculate overall statistics
-  const stats: GridStatsSummary = React.useMemo(() => {
+  // Global statistics from API (metadata.json)
+  const [globalStats, setGlobalStats] = useState<GlobalStats | null>(null);
+  const [isLoadingStats, setIsLoadingStats] = useState(false);
+
+  // Fetch global statistics when date changes
+  useEffect(() => {
+    if (!selectedDate) return;
+    
+    const fetchGlobalStats = async () => {
+      setIsLoadingStats(true);
+      try {
+        const result = await ndviApi.getStatisticsForDate(selectedDate);
+        if (result && result.statistics) {
+          setGlobalStats(result.statistics as GlobalStats);
+        }
+      } catch (error) {
+        console.error('Failed to fetch global statistics:', error);
+      } finally {
+        setIsLoadingStats(false);
+      }
+    };
+    
+    fetchGlobalStats();
+  }, [selectedDate]);
+
+  // Calculate grid-based statistics (for trend analysis from sampled cells)
+  const gridStats: GridStatsSummary = React.useMemo(() => {
     if (gridCells.length === 0) {
       return {
         totalCells: 0,
@@ -32,22 +68,17 @@ const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
       };
     }
 
-    const vegetationValues = gridCells.map(cell => cell.vegetationPercent);
-    const avgVegetation = vegetationValues.reduce((sum, val) => sum + val, 0) / vegetationValues.length;
-    const maxVegetation = Math.max(...vegetationValues);
-    const minVegetation = Math.min(...vegetationValues);
-    
     const increasingCells = gridCells.filter(cell => cell.trendDirection === 'up').length;
     const decreasingCells = gridCells.filter(cell => cell.trendDirection === 'down').length;
     const stableCells = gridCells.filter(cell => cell.trendDirection === 'stable').length;
-    const healthyVegetationCells = gridCells.filter(cell => cell.vegetationPercent >= 30).length;
+    // For desert, healthy is typically > 15% (NDVI > 0.15)
+    const healthyVegetationCells = gridCells.filter(cell => cell.ndvi >= 0.15).length;
 
-    // Provide placeholders for fields only used in GridMapContainer summary
     return {
       totalCells: gridCells.length,
-      avgVegetation: Math.round(avgVegetation),
-      maxVegetation,
-      minVegetation,
+      avgVegetation: 0,
+      maxVegetation: 0,
+      minVegetation: 0,
       increasingCells,
       decreasingCells,
       stableCells,
@@ -59,18 +90,8 @@ const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
   }, [gridCells]);
 
   const formatDate = (dateString: string) => {
+    if (!dateString) return 'Loading...';
     return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long'
-    });
-  };
-
-  const formatPreviousMonth = (dateString: string) => {
-    const currentDate = new Date(dateString);
-    const prevMonth = new Date(currentDate);
-    prevMonth.setMonth(currentDate.getMonth() - 1);
-    
-    return prevMonth.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long'
     });
@@ -87,8 +108,19 @@ const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
     }
   };
 
+  const currentYear = selectedDate ? new Date(selectedDate).getFullYear() : 2024;
+
+  // Convert NDVI to vegetation percent for display
+  const ndviToPercent = (ndvi: number) => Math.round(Math.max(0, ndvi) * 100);
+
+  // Calculate healthy threshold based on desert conditions (NDVI > 0.15 is considered healthy for desert)
+  const healthyThreshold = 0.15;
+  const healthyPercent = globalStats 
+    ? (globalStats.mean >= healthyThreshold ? 100 : Math.round((globalStats.mean / healthyThreshold) * 100))
+    : 0;
+
   return (
-    <div className="h-full overflow-y-auto">
+    <div className="h-full overflow-y-auto custom-scrollbar">
       {/* Professional Header */}
       <div className="p-4 border-b bg-gradient-to-r from-green-50 to-blue-50">
         <div className="flex items-center gap-2 mb-2">
@@ -99,144 +131,227 @@ const GridStatisticsPanel: React.FC<GridStatisticsPanelProps> = ({
           <Calendar className="w-4 h-4" />
           <span>{formatDate(selectedDate)}</span>
         </div>
-        <div className="text-xs text-gray-500 mt-1">
-          Trends vs {formatPreviousMonth(selectedDate)}
-        </div>
+        {globalStats?.from_metadata && (
+          <div className="flex items-center gap-1 mt-1 text-xs text-green-600">
+            <Database className="w-3 h-3" />
+            <span>Data from {(globalStats.count / 1000000).toFixed(1)}M pixels</span>
+          </div>
+        )}
       </div>
 
       <div className="p-4 space-y-6">
         {/* Selected Cell Details */}
         {selectedCell && (
-          <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <h3 className="font-semibold text-gray-800">Selected Grid Cell</h3>
+          <div className="bg-white rounded-lg p-4 border border-blue-100 shadow-sm">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                <h3 className="font-semibold text-gray-800">Selected Grid Cell</h3>
+              </div>
+              <div className="text-xs text-gray-500 font-mono">
+                R{selectedCell.row + 1}:C{selectedCell.col + 1}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 text-sm">
-              <div>
-                <span className="text-gray-600">Position:</span>
-                <div className="font-medium">Row {selectedCell.row + 1}, Col {selectedCell.col + 1}</div>
+            
+            <div className="grid grid-cols-2 gap-3 text-sm mb-4">
+              <div className="bg-gray-50 p-2 rounded">
+                <span className="text-xs text-gray-500 block">Vegetation</span>
+                <div className="font-bold text-green-600 text-lg">{selectedCell.vegetationPercent}%</div>
               </div>
-              <div>
-                <span className="text-gray-600">Vegetation:</span>
-                <div className="font-medium text-green-600">{selectedCell.vegetationPercent}%</div>
+              <div className="bg-gray-50 p-2 rounded">
+                <span className="text-xs text-gray-500 block">NDVI</span>
+                <div className="font-bold text-blue-600 text-lg">{selectedCell.ndvi.toFixed(3)}</div>
               </div>
-              <div>
-                <span className="text-gray-600">NDVI:</span>
-                <div className="font-medium">{selectedCell.ndvi.toFixed(3)}</div>
+            </div>
+            
+            {/* Trend Chart */}
+            <div className="mb-2">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-medium text-gray-500">12-Month Trend</span>
+                <span className={`text-xs font-medium flex items-center gap-1 ${
+                  selectedCell.changeRate > 0 ? 'text-green-600' : selectedCell.changeRate < 0 ? 'text-red-600' : 'text-gray-600'
+                }`}>
+                  {selectedCell.changeRate > 0 ? '+' : ''}{selectedCell.changeRate.toFixed(1)}% vs prev
+                </span>
               </div>
-              <div>
-                <span className="text-gray-600">Monthly Change:</span>
-                <div className="flex items-center gap-1">
-                  {getTrendIcon(selectedCell.trendDirection)}
-                  <span className={`font-medium ${
-                    selectedCell.trendDirection === 'up' ? 'text-green-600' :
-                    selectedCell.trendDirection === 'down' ? 'text-red-600' :
-                    'text-gray-600'
-                  }`}>
-                    {selectedCell.changeRate > 0 ? '+' : ''}{selectedCell.changeRate.toFixed(1)}% vs prev month
-                  </span>
-                </div>
+              <div className="h-16 w-full bg-gray-50 rounded border border-gray-100 overflow-hidden">
+                <SparklineChart 
+                  lat={selectedCell.lat} 
+                  lng={selectedCell.lon} 
+                  year={currentYear} 
+                  height={64}
+                  color={selectedCell.ndvi < 0.2 ? '#eab308' : '#22c55e'}
+                />
               </div>
             </div>
           </div>
         )}
 
-        {/* Overall Statistics */}
+        {/* Global Statistics from metadata.json */}
         <div>
           <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
             <Leaf className="w-4 h-4 text-green-600" />
             Desert Overview
           </h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 rounded-lg p-3">
-              <div className="text-2xl font-bold text-gray-800">{stats.totalCells}</div>
-              <div className="text-sm text-gray-600">Total Grid Cells</div>
+          
+          {isLoadingStats ? (
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-gray-50 rounded-lg p-3 text-center animate-pulse h-20"></div>
+              <div className="bg-gray-50 rounded-lg p-3 text-center animate-pulse h-20"></div>
             </div>
-            <div className="bg-green-50 rounded-lg p-3">
-              <div className="text-2xl font-bold text-green-600">{stats.avgVegetation}%</div>
-              <div className="text-sm text-gray-600">Avg Vegetation</div>
+          ) : globalStats ? (
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-gray-50 rounded-lg p-3 text-center">
+                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Mean NDVI</div>
+                <div className="text-2xl font-bold text-gray-800">{globalStats.mean.toFixed(3)}</div>
+                <div className="text-xs text-green-600">{ndviToPercent(globalStats.mean)}% vegetation</div>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3 text-center">
+                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Max NDVI</div>
+                <div className="text-2xl font-bold text-blue-600">{globalStats.max.toFixed(3)}</div>
+                <div className="text-xs text-blue-500">{ndviToPercent(globalStats.max)}% peak</div>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3 text-center">
+                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Min NDVI</div>
+                <div className="text-2xl font-bold text-orange-600">{globalStats.min.toFixed(3)}</div>
+                <div className="text-xs text-orange-500">lowest value</div>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3 text-center">
+                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Std Dev</div>
+                <div className="text-2xl font-bold text-purple-600">{globalStats.std.toFixed(3)}</div>
+                <div className="text-xs text-purple-500">variability</div>
+              </div>
             </div>
-            <div className="bg-blue-50 rounded-lg p-3">
-              <div className="text-2xl font-bold text-blue-600">{stats.maxVegetation}%</div>
-              <div className="text-sm text-gray-600">Max Vegetation</div>
+          ) : (
+            <div className="text-center text-gray-500 py-4">
+              No statistics available
             </div>
-            <div className="bg-orange-50 rounded-lg p-3">
-              <div className="text-2xl font-bold text-orange-600">{stats.minVegetation}%</div>
-              <div className="text-sm text-gray-600">Min Vegetation</div>
+          )}
+        </div>
+
+        {/* Vegetation Health Distribution - Visual Bar */}
+        <div>
+          <h3 className="font-semibold text-gray-800 mb-3 text-sm">Vegetation Health</h3>
+          
+          <div className="space-y-4">
+            {/* Health indicator based on mean NDVI */}
+            {globalStats && (
+              <div className="bg-gray-50 p-3 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-medium text-gray-600">Desert Health Index</span>
+                  <span className={`text-xs font-bold ${
+                    globalStats.mean >= 0.15 ? 'text-green-600' : 
+                    globalStats.mean >= 0.08 ? 'text-yellow-600' : 'text-red-600'
+                  }`}>
+                    {globalStats.mean >= 0.15 ? 'Good' : globalStats.mean >= 0.08 ? 'Moderate' : 'Low'}
+                  </span>
+                </div>
+                <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      globalStats.mean >= 0.15 ? 'bg-green-500' : 
+                      globalStats.mean >= 0.08 ? 'bg-yellow-500' : 'bg-red-500'
+                    }`}
+                    style={{ width: `${Math.min(100, (globalStats.mean / 0.3) * 100)}%` }}
+                  />
+                </div>
+                <div className="flex justify-between mt-1 text-[10px] text-gray-400">
+                  <span>0%</span>
+                  <span>15% (healthy)</span>
+                  <span>30%</span>
+                </div>
+              </div>
+            )}
+            
+            {/* Grid sampling summary */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span className="text-xs font-medium text-gray-600">Healthy (&ge;15%)</span>
+                </div>
+                <div className="text-lg font-bold text-gray-800">{gridStats.healthyVegetationCells}</div>
+                <div className="text-xs text-gray-500">{Math.round((gridStats.healthyVegetationCells / gridStats.totalCells) * 100) || 0}% of cells</div>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-orange-400"></div>
+                  <span className="text-xs font-medium text-gray-600">Sparse (&lt;15%)</span>
+                </div>
+                <div className="text-lg font-bold text-gray-800">{gridStats.totalCells - gridStats.healthyVegetationCells}</div>
+                <div className="text-xs text-gray-500">{Math.round(((gridStats.totalCells - gridStats.healthyVegetationCells) / gridStats.totalCells) * 100) || 0}% of cells</div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Vegetation Health */}
+        {/* Trend Analysis - Visual List */}
         <div>
-          <h3 className="font-semibold text-gray-800 mb-3">Vegetation Health Distribution</h3>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-                <span className="text-sm font-medium">Healthy (&ge;30%)</span>
-              </div>
-              <div className="text-sm font-bold text-green-600">
-                {stats.healthyVegetationCells} cells ({Math.round((stats.healthyVegetationCells / stats.totalCells) * 100)}%)
-              </div>
-            </div>
-            <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-orange-600 rounded-full"></div>
-                <span className="text-sm font-medium">Sparse (&lt;30%)</span>
-              </div>
-              <div className="text-sm font-bold text-orange-600">
-                {stats.totalCells - stats.healthyVegetationCells} cells ({Math.round(((stats.totalCells - stats.healthyVegetationCells) / stats.totalCells) * 100)}%)
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Trend Analysis */}
-        <div>
-          <h3 className="font-semibold text-gray-800 mb-3">Month-over-Month Changes</h3>
+          <h3 className="font-semibold text-gray-800 mb-3 text-sm">MoM Changes (Grid Sampling)</h3>
           <div className="space-y-2">
-            <div className="flex items-center justify-between p-2 bg-green-50 rounded">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-green-600" />
-                <span className="text-sm">Improving (&gt;2%)</span>
+            {/* Improving */}
+            <div className="relative">
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="flex items-center gap-1 text-green-700 font-medium">
+                  <TrendingUp className="w-3 h-3" /> Improving
+                </span>
+                <span className="font-bold text-gray-700">{gridStats.increasingCells} cells</span>
               </div>
-              <span className="text-sm font-semibold text-green-600">
-                {stats.increasingCells} cells ({Math.round((stats.increasingCells / stats.totalCells) * 100)}%)
-              </span>
+              <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-green-500 rounded-full" 
+                  style={{ width: `${(gridStats.increasingCells / gridStats.totalCells) * 100 || 0}%` }}
+                ></div>
+              </div>
             </div>
-            <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
-              <div className="flex items-center gap-2">
-                <Minus className="w-4 h-4 text-gray-600" />
-                <span className="text-sm">Stable (±2%)</span>
+
+            {/* Stable */}
+            <div className="relative">
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="flex items-center gap-1 text-gray-600 font-medium">
+                  <Minus className="w-3 h-3" /> Stable
+                </span>
+                <span className="font-bold text-gray-700">{gridStats.stableCells} cells</span>
               </div>
-              <span className="text-sm font-semibold text-gray-600">
-                {stats.stableCells} cells ({Math.round((stats.stableCells / stats.totalCells) * 100)}%)
-              </span>
+              <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gray-400 rounded-full" 
+                  style={{ width: `${(gridStats.stableCells / gridStats.totalCells) * 100 || 0}%` }}
+                ></div>
+              </div>
             </div>
-            <div className="flex items-center justify-between p-2 bg-red-50 rounded">
-              <div className="flex items-center gap-2">
-                <TrendingDown className="w-4 h-4 text-red-600" />
-                <span className="text-sm">Declining (&lt;-2%)</span>
+
+            {/* Declining */}
+            <div className="relative">
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="flex items-center gap-1 text-red-600 font-medium">
+                  <TrendingDown className="w-3 h-3" /> Declining
+                </span>
+                <span className="font-bold text-gray-700">{gridStats.decreasingCells} cells</span>
               </div>
-              <span className="text-sm font-semibold text-red-600">
-                {stats.decreasingCells} cells ({Math.round((stats.decreasingCells / stats.totalCells) * 100)}%)
-              </span>
+              <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-red-500 rounded-full" 
+                  style={{ width: `${(gridStats.decreasingCells / gridStats.totalCells) * 100 || 0}%` }}
+                ></div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Additional Metrics */}
-        <div className="bg-gray-50 rounded-lg p-4">
-          <h3 className="font-semibold text-gray-800 mb-3">Key Insights</h3>
-          <div className="space-y-2 text-sm text-gray-700">
-            <div>• Vegetation coverage ranges from {stats.minVegetation}% to {stats.maxVegetation}%</div>
-            <div>• {Math.round((stats.healthyVegetationCells / stats.totalCells) * 100)}% of the desert shows healthy vegetation</div>
-            <div>• {Math.round((stats.increasingCells / stats.totalCells) * 100)}% of areas improved from previous month</div>
-            <div>• {Math.round((stats.decreasingCells / stats.totalCells) * 100)}% of areas declined from previous month</div>
-            {stats.avgVegetation > 25 && <div>• Above-average vegetation levels detected for this time period</div>}
-          </div>
+        {/* Insight Card */}
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 border border-blue-100">
+          <h3 className="font-semibold text-blue-900 mb-2 text-xs uppercase tracking-wider">Analysis Insight</h3>
+          <p className="text-sm text-blue-800 leading-relaxed">
+            {globalStats && globalStats.mean > 0.1 
+              ? "The desert shows promising signs of vegetation retention this month." 
+              : "Vegetation levels are typical for an arid desert environment."}
+            <span className="block mt-1 text-xs text-blue-600">
+              {gridStats.increasingCells > gridStats.decreasingCells 
+                ? "Overall trend is positive with net growth." 
+                : "Monitoring recommended for declining areas."}
+            </span>
+          </p>
         </div>
       </div>
     </div>
